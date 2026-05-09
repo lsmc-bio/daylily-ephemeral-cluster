@@ -1366,11 +1366,14 @@ def configure_headnode(
         cli_cfg = yaml.safe_load(fh) or {}
 
     daylily = cli_cfg.get("daylily", {}) or {}
-    repo_ref = daylily.get("git_ephemeral_cluster_repo_tag", "main")
-    repo_url = daylily.get(
-        "git_ephemeral_cluster_repo",
-        "https://github.com/Daylily-Informatics/daylily-ephemeral-cluster.git",
-    )
+    repo_ref = str(daylily.get("git_ephemeral_cluster_repo_tag") or "").strip()
+    repo_url = str(daylily.get("git_ephemeral_cluster_repo") or "").strip()
+    if not repo_ref or not repo_url:
+        logger.error(
+            "  ✗ daylily_cli_global.yaml must define git_ephemeral_cluster_repo "
+            "and git_ephemeral_cluster_repo_tag."
+        )
+        return False
     repo_name = "daylily-ephemeral-cluster"
     try:
         repo_spec = _resolve_headnode_repo_spec(repo_url, repo_ref)

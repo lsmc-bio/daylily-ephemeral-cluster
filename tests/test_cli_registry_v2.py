@@ -20,6 +20,7 @@ from daylily_ec.headnode import SQUEUE_FORMAT
 from daylily_ec.state.models import StateRecord
 
 runner = CliRunner()
+REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
 EXPECTED_COMMANDS = {
@@ -65,6 +66,10 @@ EXPECTED_COMMANDS = {
 def _activate_dayec_runtime(monkeypatch) -> None:
     monkeypatch.setenv("CONDA_PREFIX", "/tmp/dayec")
     monkeypatch.setenv("CONDA_DEFAULT_ENV", "DAY-EC")
+    monkeypatch.setenv(
+        "DAYLILY_EC_RESOURCES_DIR",
+        str(REPO_ROOT / "daylily_ec" / "resources" / "payload"),
+    )
 
 
 def _patch_headnode_selection(
@@ -1282,7 +1287,7 @@ def test_samples_run_stages_then_launches_catalog_command(monkeypatch, tmp_path)
     assert "--destination" in launch_argv
     assert "cg-run" in launch_argv
     assert "--git-tag" in launch_argv
-    assert "0.7.704" in launch_argv
+    assert "0.7.726" in launch_argv
     assert "--dy-command" in launch_argv
     dy_command = launch_argv[launch_argv.index("--dy-command") + 1]
     assert "produce_cgt7p_vcf" in dy_command

@@ -45,7 +45,7 @@ if [ -f ./activate ] && [ -f ./environment.yaml ]; then
 elif [ -f "./$REPO_DIR/activate" ] && [ -f "./$REPO_DIR/environment.yaml" ]; then
   cd "$REPO_DIR"
 else
-  git clone -b main https://github.com/Daylily-Informatics/daylily-ephemeral-cluster.git "$REPO_DIR"
+  git clone -b main https://github.com/lsmc-bio/daylily-ephemeral-cluster.git "$REPO_DIR"
   cd "$REPO_DIR"
 fi
 
@@ -86,7 +86,7 @@ The rest of this doc shows the same lifecycle as separate commands.
 ## Clone Main
 
 ```bash
-git clone -b main https://github.com/Daylily-Informatics/daylily-ephemeral-cluster.git
+git clone -b main https://github.com/lsmc-bio/daylily-ephemeral-cluster.git
 cd daylily-ephemeral-cluster
 ```
 
