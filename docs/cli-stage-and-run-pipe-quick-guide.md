@@ -13,14 +13,18 @@ source ./activate
 
 export AWS_PROFILE=daylily-service-lsmc
 export REGION=us-west-2
-export CLUSTER_NAME=mk-gotime3
+export CLUSTER_NAME=lsbio-fork-260509-124701
 export REF_BUCKET=s3://lsmc-dayoa-omics-analysis-us-west-2
 export RUN_STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
 ```
 
-Optional sanity checks:
+`lsbio-fork-260509-124701` was the active configured cluster used for live
+validation on 2026-05-09. If that cluster has been retired, pick another active
+configured cluster first:
 
 ```bash
+dyec cluster list --profile "$AWS_PROFILE" --region "$REGION" --verbose
+
 dyec version
 dyec runtime status
 dyec headnode jobs --profile "$AWS_PROFILE" --region "$REGION" --cluster "$CLUSTER_NAME"
@@ -28,9 +32,9 @@ dyec headnode jobs --profile "$AWS_PROFILE" --region "$REGION" --cluster "$CLUST
 
 ## Test Data Cases
 
-| Case | Manifest | Catalog command |
+| Case | Manifest | Catalog command / launch note |
 | --- | --- | --- |
-| ONT solo | `examples/staging/ont_solo/analysis_samples_manifest.tsv` | `ont_snv_alignstats` |
+| ONT solo | `examples/staging/ont_solo/analysis_samples_manifest.tsv` | Use the two-step CRAM launch below. |
 | Ultima solo | `examples/staging/ultima_solo/analysis_samples_manifest.tsv` | `ultima_snv_alignstats` |
 | ILMN solo | `examples/staging/ilmn_solo/analysis_samples_manifest.tsv` | `illumina_snv_alignstats` |
 | ILMN+ONT hybrid | `examples/staging/hybrid_ilmn_ont/analysis_samples_manifest.tsv` | `hybrid_ilmn_ont_snv` |
@@ -45,12 +49,16 @@ This is the easiest path. It stages the manifest, validates compatibility with
 the catalog command, launches the remote DayOA workflow dry-run, and writes a
 receipt next to the generated config files.
 
+Use the one-step catalog flow for Ultima solo, ILMN solo, and ILMN+ONT hybrid.
+The ONT solo manifest is CRAM-only test data; use the two-step ONT command in
+the next section.
+
 Set one case:
 
 ```bash
-export CASE=ont_solo
-export MANIFEST=examples/staging/ont_solo/analysis_samples_manifest.tsv
-export COMMAND_ID=ont_snv_alignstats
+export CASE=ultima_solo
+export MANIFEST=examples/staging/ultima_solo/analysis_samples_manifest.tsv
+export COMMAND_ID=ultima_snv_alignstats
 export DESTINATION="stg-ex-${CASE}-${RUN_STAMP}"
 export SESSION="$DESTINATION"
 export CFG_DIR="$PWD/tmp-stage-config/get-going/${RUN_STAMP}/${CASE}"
@@ -72,13 +80,23 @@ dyec samples run "$MANIFEST" \
   --dry-run
 ```
 
-Repeat with the table values for the other cases. For full execution, use a new
-destination/session and remove `--dry-run`.
+Repeat with the table values for ILMN solo and ILMN+ONT hybrid. For full
+execution, use a new destination/session and remove `--dry-run`.
 
 ## Two-Step Stage Then Launch
 
 Use this path when you want to inspect generated `samples.tsv` and `units.tsv`
-before launching.
+before launching, or when launching the ONT solo CRAM test data.
+
+For ONT solo, set:
+
+```bash
+export CASE=ont_solo_cram
+export MANIFEST=examples/staging/ont_solo/analysis_samples_manifest.tsv
+export DESTINATION="stg-ex-${CASE}-${RUN_STAMP}"
+export SESSION="$DESTINATION"
+export CFG_DIR="$PWD/tmp-stage-config/get-going/${RUN_STAMP}/${CASE}"
+```
 
 Stage:
 
@@ -99,8 +117,8 @@ export STAGE_DIR=/fsx/data/staged_sample_data/remote_stage_<timestamp>
 Pick the dry-run DayOA command for the case:
 
 ```bash
-# ONT solo
-export DY_COMMAND="bin/day_run produce_alignstats produce_sentmm2ont_align_sort produce_sentdont_vcf produce_snv_concordances --config dedupers=['na'] -p -j 5 -k -n"
+# ONT solo CRAM
+export DY_COMMAND="bin/day_run produce_alignstats produce_sentdont_vcf produce_snv_concordances --config dedupers=['na'] -p -j 5 -k -n"
 
 # Ultima solo
 export DY_COMMAND="bin/day_run produce_alignstats produce_sentdug_vcf produce_snv_concordances --config dppl=['na'] -p -j 20 -k -n"
@@ -149,3 +167,11 @@ dyec workflow logs \
 ```
 
 Successful dry-runs should eventually report `exit_code: 0` in workflow status.
+
+## Live Validation Notes
+
+On 2026-05-09, `mk-gotime3` was not resolvable, so the dry-run checks were run
+against `lsbio-fork-260509-124701`. Ultima solo, ILMN solo, ILMN+ONT hybrid, and
+the ONT solo CRAM two-step launch all reported `exit_code: 0`. The catalog
+one-step `ont_snv_alignstats` dry-run failed for the ONT CRAM manifest because
+it includes `produce_sentmm2ont_align_sort`, which expects ONT FASTQ reads.
