@@ -1,5 +1,5 @@
 # Daylily Ephemeral Cluster
-[![Latest release](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2FDaylily-Informatics%2Fdaylily-ephemeral-cluster%2Fmain%2Fconfig%2Fdaylily_cli_global.yaml&query=%24.daylily.git_ephemeral_cluster_repo_release_tag&label=latest%20release&cacheSeconds=300&color=teal)](https://github.com/Daylily-Informatics/daylily-ephemeral-cluster/releases) [![Latest tag](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2FDaylily-Informatics%2Fdaylily-ephemeral-cluster%2Fmain%2Fconfig%2Fdaylily_cli_global.yaml&query=%24.daylily.git_ephemeral_cluster_repo_tag&label=latest%20tag&color=pink&cacheSeconds=300)](https://github.com/Daylily-Informatics/daylily-ephemeral-cluster/tags)
+[![Latest release](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Flsmc-bio%2Fdaylily-ephemeral-cluster%2Fmain%2Fconfig%2Fdaylily_cli_global.yaml&query=%24.daylily.git_ephemeral_cluster_repo_release_tag&label=latest%20release&cacheSeconds=300&color=teal)](https://github.com/lsmc-bio/daylily-ephemeral-cluster/releases) [![Latest tag](https://img.shields.io/badge/dynamic/yaml?url=https%3A%2F%2Fraw.githubusercontent.com%2Flsmc-bio%2Fdaylily-ephemeral-cluster%2Fmain%2Fconfig%2Fdaylily_cli_global.yaml&query=%24.daylily.git_ephemeral_cluster_repo_tag&label=latest%20tag&color=pink&cacheSeconds=300)](https://github.com/lsmc-bio/daylily-ephemeral-cluster/tags)
 
 > Infrastructure-as-code for spinning up ephemeral (transient) **AWS ParallelCluster's** that are tuned for bioinformatics and multi-omics analysis, but can run any slurm based or linux derived worflows. The project assembles the networking, storage, authentication, and head-node tooling required to launch, monitor, and tear down self-scaling Slurm clusters with predictable performance and cost transparency. Workflows themselves live in separate repositories, may be in any framework that supports slurm (snakemake, nextflow, cromwell, etc) and can be plugged in on demand and executed on your ephemeral resources. 
 
@@ -30,7 +30,7 @@ daylily-ec create --region-az $REGION_AZ --profile $AWS_PROFILE
 
 ### Architecture & Features
 - **Rapid, reproducible cluster bring-up** built on AWS ParallelCluster with optional PCUI for browser-based terminal and multi-cluster management. 
-- **Cost-aware infrastructure** with scripts that inspect spot-market capacity, calculate per-sample spend, and tag workloads for downstream budget reporting. _<small>(using [daylily-omics-analysis](https://github.com/Daylily-Informatics/daylily-omics-analysis) WGS analysis workflows, can run `fastq`->aligned deduped CRAM->snv+sv VCFs in ~1hr for as little as $5/genome)</small>_
+- **Cost-aware infrastructure** with scripts that inspect spot-market capacity, calculate per-sample spend, and tag workloads for downstream budget reporting. _<small>(using [daylily-omics-analysis](https://github.com/lsmc-bio/daylily-omics-analysis) WGS analysis workflows, can run `fastq`->aligned deduped CRAM->snv+sv VCFs in ~1hr for as little as $5/genome)</small>_
 - **Shared FSx for Lustre file system** that mirrors to S3 so hundreds or thousands of spot instances can safely collaborate on the same dataset while persisting results. Final results may then be automagically mirrored back to `s3`. 
 - **Pluggable analysis catalog** governed by YAML, enabling one-click cloning of approved pipelines or custom repositories for development work. 
 - **Remote data staging & pipeline launch helpers** that transform sample manifests, materialize canned control datasets, and kick off workflows from your workstation into tmux sessions on the head node. 
@@ -381,7 +381,7 @@ region = <REGION>
 ### Clone stable release of `daylily` Git Repository
 
 ```bash
-git clone -b $(yq -r '.daylily.git_tag' "config/daylily/daylily_cli_global.yaml") https://github.com/Daylily-Informatics/daylily-ephemeral-cluster.git
+git clone -b $(yq -r '.daylily.git_tag' "config/daylily/daylily_cli_global.yaml") https://github.com/lsmc-bio/daylily-ephemeral-cluster.git
 cd daylily-ephemeral-cluster
 ```
 
@@ -1070,7 +1070,7 @@ cd /fsx/analysis_results/ubuntu/dayoa/daylily-omics-analysis
 Output looks like:
 ```text
 Great success! Daylily repository cloned.
-Repository: https://github.com/Daylily-Informatics/daylily-omics-analysis.git
+Repository: https://github.com/lsmc-bio/daylily-omics-analysis.git
 Reference : 0.7.333
 Location  : /fsx/analysis_results/ubuntu/dayoa/daylily-omics-analysis
 
@@ -1080,7 +1080,7 @@ To get started:
 ```
 
 ---
-> Please see the testing section of the [daylily-omics-analysis README](https://github.com/Daylily-Informatics/daylily-omics-analysis).
+> Please see the testing section of the [daylily-omics-analysis README](https://github.com/lsmc-bio/daylily-omics-analysis).
 ---
 
 ## Stage Sample Data & Build `config/samples.tsv` and `config/units.tsv`
@@ -1468,7 +1468,7 @@ _example from the daylily-omics-analysis repo_
 
 # Versioning
 
-Daylily uses [Semantic Versioning](https://semver.org/). For the versions available, see the [tags on this repository](https://github.com/Daylily-Informatics/daylily-ephemeral-cluster/tags).
+Daylily uses [Semantic Versioning](https://semver.org/). For the versions available, see the [tags on this repository](https://github.com/lsmc-bio/daylily-ephemeral-cluster/tags).
 
 # Known Issues
 

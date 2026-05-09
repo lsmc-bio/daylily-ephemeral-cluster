@@ -14,7 +14,7 @@ source .venv/bin/activate
 pip install /path/to/daylily-ephemeral-cluster
 
 # Or from git
-pip install "git+https://github.com/Daylily-Informatics/daylily-ephemeral-cluster.git@<ref>"
+pip install "git+https://github.com/lsmc-bio/daylily-ephemeral-cluster.git@<ref>"
 ```
 
 ## Verify The Install
