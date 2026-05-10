@@ -1287,7 +1287,7 @@ def test_samples_run_stages_then_launches_catalog_command(monkeypatch, tmp_path)
     assert "--destination" in launch_argv
     assert "cg-run" in launch_argv
     assert "--git-tag" in launch_argv
-    assert "0.7.726" in launch_argv
+    assert "0.7.736" in launch_argv
     assert "--dy-command" in launch_argv
     dy_command = launch_argv[launch_argv.index("--dy-command") + 1]
     assert "produce_cgt7p_vcf" in dy_command
