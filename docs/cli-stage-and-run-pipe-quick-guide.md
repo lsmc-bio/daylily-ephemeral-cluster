@@ -76,7 +76,7 @@ dyec samples run "$MANIFEST" \
   --config-dir "$CFG_DIR" \
   --destination "$DESTINATION" \
   --session-name "$SESSION" \
-  --git-tag 0.7.748 \
+  --git-tag 0.7.751 \
   --dry-run
 ```
 
@@ -140,7 +140,7 @@ dyec workflow launch \
   --stage-dir "$STAGE_DIR" \
   --destination "$DESTINATION" \
   --session-name "$SESSION" \
-  --git-tag 0.7.748 \
+  --git-tag 0.7.751 \
   --genome hg38_broad \
   --dy-command "$DY_COMMAND" \
   --dry-run
