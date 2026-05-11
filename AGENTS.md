@@ -10,6 +10,9 @@
 
 - All SSM interactive sessions and command payloads that interact with headnodes must run as `ubuntu` in a bash login shell.
 - Do not use `root` for headnode work. The `ubuntu` user is in sudoers; use targeted `sudo` from `ubuntu` only when escalation is required.
+- On DayOA headnodes, use `bash -l` / `bash -lc` for command execution so `dyoainit` shell setup and aliases such as `dy-a` and `dy-r` are available. Non-login shells can silently miss those aliases.
+- `/fsx/data` is read-only and always will be; never write, copy, stage, or create temporary files under `/fsx/data`.
+- To make data appear under `/fsx/data`, copy or sync it to the backing S3 bucket/prefix mounted by FSx; never treat the local `/fsx/data` mount as writable.
 - Interactive sessions must use `SSM-SessionManagerRunShell` configured with `runAsDefaultUser=ubuntu` and bash login-shell behavior.
 - Command payloads must go through the central `daylily_ec.aws.ssm.run_shell` and `daylily_ec.aws.ssm.write_remote_text` helpers rather than ad hoc `aws ssm send-command` calls.
 - `daylily-ec headnode connect` must preserve interactive TUI/editor key chords, especially Emacs `Ctrl-S` and `Ctrl-X Ctrl-S`. Keep both layers of XON/XOFF protection: the remote ubuntu login shell must disable flow control, and the local `daylily_ec.aws.ssm.start_session` path must keep a local `/dev/tty` flow-control guard running while Session Manager owns the terminal. A one-time local `stty -ixon -ixoff` is not sufficient because the AWS Session Manager/plugin startup path can leave the live local TTY with flow control enabled again.
