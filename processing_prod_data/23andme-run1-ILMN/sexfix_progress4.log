@@ -1,0 +1,8 @@
+DAY-EC activated.
+DAY-EC activated.
+date=2026-05-10T19:49:53Z
+ 476737  476671       01:48  0.1  0.0 python3 /home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_and_rerun.py
+ 476881  476737       00:22  202  8.3 /fsx/data/cached_envs/sentieon-genomics-202503.02/libexec/bwa mem -t 2 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/tmp/LSMC-NTC/r1.fq /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/tmp/LSMC-NTC/r2.fq
+ 476890  476881       00:22  0.0  0.0 /fsx/data/cached_envs/sentieon-genomics-202503.02/libexec/bwa mem -t 2 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/tmp/LSMC-NTC/r1.fq /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/tmp/LSMC-NTC/r2.fq
+bwa_logs=1
+2026-05-10T19:49:29.8094544080 1677 LSMC-HG003.bwa.stderr.log

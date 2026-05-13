@@ -1,0 +1,9 @@
+{
+  "command": "bin/day_run produce_alignstats produce_multiqc_final produce_snv_concordances produce_tiddit --config aligners=['sent'] dedupers=['dppl'] snv_callers=['sentd'] sv_callers=['tiddit'] -p -j 100 -k -n",
+  "completed_at": "2026-05-10T20:11:33Z",
+  "exit_code": 0,
+  "metadata_note": "rerun after combined sex inference metadata patch",
+  "repo_path": "/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis",
+  "session_name": "23andme-run1-ILMN",
+  "started_at": "2026-05-10T20:10:57Z"
+}

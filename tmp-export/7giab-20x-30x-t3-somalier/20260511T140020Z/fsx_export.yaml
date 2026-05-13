@@ -1,0 +1,17 @@
+fsx_export:
+  status: started
+  cluster_name: fk-260509-use
+  region: us-west-2
+  profile: lsmc
+  file_system_id: fs-0848800bb2b15d2f9
+  task_id: task-0702faaa10ef6b4af
+  lifecycle: PENDING
+  type: EXPORT_TO_REPOSITORY
+  paths:
+  - analysis_results/ubuntu/7giab-20x-30x-t3/daylily-omics-analysis
+  source_path: /fsx/analysis_results/ubuntu/7giab-20x-30x-t3/daylily-omics-analysis
+  s3_uri: s3://lsmc-dayoa-omics-analysis-us-west-2/FSxLustre20260509T204833Z/analysis_results/ubuntu/7giab-20x-30x-t3/daylily-omics-analysis
+  report_path: s3://lsmc-dayoa-omics-analysis-us-west-2/FSxLustre20260509T204833Z/daylily-monitor/1778508020/export-report
+  created_at_utc: 20260511T140020Z
+  note: Second export after adding Somalier/relatedness outputs and rebuilding final
+    MultiQC.

@@ -1,0 +1,19 @@
+{
+    "Location": "https://cloudfront.amazonaws.com/2020-05-31/distribution/E2XJKZDRX9JT1I/invalidation/I94RTOB1RNEP836KL7IWIQ80ZH",
+    "Invalidation": {
+        "Id": "I94RTOB1RNEP836KL7IWIQ80ZH",
+        "Status": "InProgress",
+        "CreateTime": "2026-05-13T05:55:05.705000+00:00",
+        "InvalidationBatch": {
+            "Paths": {
+                "Quantity": 3,
+                "Items": [
+                    "/DAY_final_multiqc.html",
+                    "/DAY_final_multiqc_data/*",
+                    "/"
+                ]
+            },
+            "CallerReference": "cli-1778651705-975051"
+        }
+    }
+}

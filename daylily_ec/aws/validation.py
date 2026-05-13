@@ -37,6 +37,7 @@ SUPPORTED_MODES: tuple[str, ...] = ("permissions", "quotas", "all")
 DEFAULT_CONFIG_PATH = "config/daylily_ephemeral_cluster_template.yaml"
 DEFAULT_CLUSTER_TEMPLATE_PATH = "config/day_cluster/prod_cluster.yaml"
 SSM_SESSION_DOCUMENT = "SSM-SessionManagerRunShell"
+SSM_SESSION_TYPE = "Standard_Stream"
 
 
 class AwsValidationError(RuntimeError):
@@ -350,6 +351,7 @@ def check_ssm_session_document(ssm_client: Any) -> CheckResult:
         )
 
     inputs = payload.get("inputs", {}) if isinstance(payload, dict) else {}
+    session_type = str(payload.get("sessionType") or "") if isinstance(payload, dict) else ""
     shell_profile = inputs.get("shellProfile", {}) if isinstance(inputs, dict) else {}
     linux_shell_profile = ""
     if isinstance(shell_profile, dict):
@@ -363,11 +365,17 @@ def check_ssm_session_document(ssm_client: Any) -> CheckResult:
 
     details = {
         "document": SSM_SESSION_DOCUMENT,
+        "sessionType": session_type,
         "runAsEnabled": run_as_enabled,
         "runAsDefaultUser": run_as_user,
         "shellProfileLinux": linux_shell_profile,
     }
-    if run_as_enabled and run_as_user == "ubuntu" and login_shell_ok:
+    if (
+        session_type == SSM_SESSION_TYPE
+        and run_as_enabled
+        and run_as_user == "ubuntu"
+        and login_shell_ok
+    ):
         return CheckResult(
             id="ssm.session_document",
             status=CheckStatus.PASS,
@@ -378,7 +386,8 @@ def check_ssm_session_document(ssm_client: Any) -> CheckResult:
         status=CheckStatus.FAIL,
         details=details,
         remediation=(
-            f"Update {SSM_SESSION_DOCUMENT} so runAsEnabled is true, "
+            f"Update {SSM_SESSION_DOCUMENT} so sessionType is {SSM_SESSION_TYPE}, "
+            "runAsEnabled is true, "
             "runAsDefaultUser is ubuntu, and shellProfile.linux enters a bash "
             "login shell."
         ),

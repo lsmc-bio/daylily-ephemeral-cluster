@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py", line 417, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py", line 405, in main
+    apply_sex_results(results)
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py", line 300, in apply_sex_results
+    s3_uri = upload_fsx_shadow_to_s3(stage_shadow, STAGE_SAMPLES)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py", line 160, in upload_fsx_shadow_to_s3
+    subprocess.run(
+  File "/home/ubuntu/miniconda3/envs/DAY-EC/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['aws', 's3', 'cp', '/home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/20260510T130308Z_samples.tsv', 's3://lsmc-dayoa-omics-analysis-us-west-2/data/staged_sample_data/remote_stage_20260510T130308Z/20260510T130308Z_samples.tsv']' returned non-zero exit status 1.
+failed to run commands: exit status 1DAY-EC activated.
+DAY-EC activated.
+REUSING_SEX_INFERENCE_TSV=/home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/sex_inference.tsv	rows=96
+BACKUP_SAMPLES=/home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/backups/samples.tsv.pre_combined_sexfix_1778443755
+UPDATED_CONFIG_SAMPLES=/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/samples.tsv
+BACKUP_SAMPLES=/home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/backups/20260510T130308Z_samples.tsv.pre_combined_sexfix_1778443755
+SKIPPED_STAGE_SAMPLES_FSX_UPDATE=/fsx/data/staged_sample_data/remote_stage_20260510T130308Z/20260510T130308Z_samples.tsv	[Errno 13] Permission denied: '/fsx/data/staged_sample_data/remote_stage_20260510T130308Z/20260510T130308Z_samples.tsv.tmp'

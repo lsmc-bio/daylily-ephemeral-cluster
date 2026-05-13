@@ -1,0 +1,16 @@
+timestamp=20260511T084859Z
+smoke_stage_s3=s3://lsmc-dayoa-omics-analysis-us-west-2/data/staged_sample_data/remote_stage_20260511T084859Z_23ame_ilmn_1_bylane_smoke3/
+smoke_stage_fsx=/fsx/data/staged_sample_data/remote_stage_20260511T084859Z_23ame_ilmn_1_bylane_smoke3/
+full_stage_s3=s3://lsmc-dayoa-omics-analysis-us-west-2/data/staged_sample_data/remote_stage_20260511T084859Z_23ame_ilmn_1_bylane_full/
+full_stage_fsx=/fsx/data/staged_sample_data/remote_stage_20260511T084859Z_23ame_ilmn_1_bylane_full/
+full_samples=processing_prod_data/23andme-run1-ILMN/perlane_config/full_samples.tsv
+full_units=processing_prod_data/23andme-run1-ILMN/perlane_config/full_units.tsv
+smoke_samples=processing_prod_data/23andme-run1-ILMN/perlane_config/smoke3_samples.tsv
+smoke_units=processing_prod_data/23andme-run1-ILMN/perlane_config/smoke3_units.tsv
+full_sample_rows=96
+full_unit_rows=768
+smoke_sample_rows=3
+smoke_unit_rows=24
+smoke_fastq_objects=48
+smoke_fastq_bytes=74061288753
+smoke_fastq_gib=68.974950

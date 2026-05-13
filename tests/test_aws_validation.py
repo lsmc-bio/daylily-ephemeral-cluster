@@ -52,6 +52,7 @@ def test_ssm_session_document_detects_wrong_run_as_user() -> None:
     ssm.get_document.return_value = {
         "Content": json.dumps(
             {
+                "sessionType": "Standard_Stream",
                 "inputs": {
                     "runAsEnabled": True,
                     "runAsDefaultUser": "root",
@@ -66,6 +67,28 @@ def test_ssm_session_document_detects_wrong_run_as_user() -> None:
     assert result.status == CheckStatus.FAIL
     assert result.details["runAsDefaultUser"] == "root"
     assert "ubuntu" in result.remediation
+
+
+def test_ssm_session_document_detects_wrong_session_type() -> None:
+    ssm = MagicMock()
+    ssm.get_document.return_value = {
+        "Content": json.dumps(
+            {
+                "sessionType": "InteractiveCommands",
+                "inputs": {
+                    "runAsEnabled": True,
+                    "runAsDefaultUser": "ubuntu",
+                    "shellProfile": {"linux": "cd /home/ubuntu && exec bash -l"},
+                },
+            }
+        )
+    }
+
+    result = check_ssm_session_document(ssm)
+
+    assert result.status == CheckStatus.FAIL
+    assert result.details["sessionType"] == "InteractiveCommands"
+    assert "Standard_Stream" in result.remediation
 
 
 def test_simulation_reports_denied_action() -> None:

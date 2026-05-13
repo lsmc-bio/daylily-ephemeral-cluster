@@ -1,0 +1,7 @@
+DAY-EC activated.
+DAY-EC activated.
+repo=/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis
+snakemake_logs
+.snakemake/log/2026-05-10T142100.626133.snakemake.log
+latest_log=.snakemake/log/2026-05-10T142100.626133.snakemake.log
+Unlocking working directory.

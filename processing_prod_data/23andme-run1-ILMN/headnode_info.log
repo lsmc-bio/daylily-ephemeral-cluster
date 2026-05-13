@@ -1,0 +1,63 @@
+{
+  "creationTime": "2026-05-09T20:48:17.237Z",
+  "headNode": {
+    "launchTime": "2026-05-09T21:19:55.000Z",
+    "instanceId": "i-047b238434ea745b2",
+    "publicIpAddress": "44.236.252.93",
+    "instanceType": "r7i.2xlarge",
+    "state": "running",
+    "privateIpAddress": "10.0.0.41"
+  },
+  "version": "3.13.2",
+  "clusterConfiguration": {
+    "url": "redacted-presigned-cluster-config-url"
+  },
+  "tags": [
+    {
+      "value": "none",
+      "key": "aws-parallelcluster-daylily-git-deets"
+    },
+    {
+      "value": "3.13.2",
+      "key": "parallelcluster:version"
+    },
+    {
+      "value": "skip",
+      "key": "aws-parallelcluster-enforce-budget"
+    },
+    {
+      "value": "aws_profile-lsmc",
+      "key": "aws-parallelcluster-jobid"
+    },
+    {
+      "value": "s3://lsmc-dayoa-omics-analysis-us-west-2",
+      "key": "aws-parallelcluster-monitor-bucket"
+    },
+    {
+      "value": "fk-260509-use",
+      "key": "parallelcluster:cluster-name"
+    },
+    {
+      "value": "fk-260509-use",
+      "key": "aws-parallelcluster-clustername"
+    },
+    {
+      "value": "fk-260509-use",
+      "key": "aws-parallelcluster-project"
+    },
+    {
+      "value": "jmajor-root",
+      "key": "aws-parallelcluster-username"
+    }
+  ],
+  "cloudFormationStackStatus": "CREATE_COMPLETE",
+  "clusterName": "fk-260509-use",
+  "computeFleetStatus": "RUNNING",
+  "cloudformationStackArn": "arn:aws:cloudformation:us-west-2:108782052779:stack/fk-260509-use/67cd4e00-4be8-11f1-b85d-02c7ea6f8f8f",
+  "lastUpdatedTime": "2026-05-09T20:48:17.237Z",
+  "region": "us-west-2",
+  "clusterStatus": "CREATE_COMPLETE",
+  "scheduler": {
+    "type": "slurm"
+  }
+}

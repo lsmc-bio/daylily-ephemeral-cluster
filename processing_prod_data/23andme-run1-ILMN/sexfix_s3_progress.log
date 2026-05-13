@@ -1,0 +1,7 @@
+DAY-EC activated.
+DAY-EC activated.
+date=2026-05-10T20:03:42Z
+ 478807  478741       01:43  0.8  0.0 python3 /home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py
+ 479701  478807       00:00  0.0  0.0 /home/ubuntu/miniconda3/envs/DAY-EC/bin/python /home/ubuntu/miniconda3/envs/DAY-EC/bin/aws s3api get-object --bucket lsmc-dayoa-omics-analysis-us-west-2 --key data/staged_sample_data/remote_stage_20260510T130308Z/20260507-LH01106-0005-A23K3JVLT4_s77759-NOVASEQ-PCR-FREE-gdna-23andme-run1-ILMN_D0_0/20260507-LH01106-0005-A23K3JVLT4_s77759-NOVASEQ-PCR-FREE-gdna-23andme-run1-ILMN_D0_0_merged_R1.fastq.gz --range bytes=0-8388607 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/s3_ranges/s77759.R1.fastq.gz
+2026-05-10T20:03:42.4350717230 53186753 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/all_samples.R1.fq
+2026-05-10T20:03:42.4390717210 53186753 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/all_samples.R2.fq

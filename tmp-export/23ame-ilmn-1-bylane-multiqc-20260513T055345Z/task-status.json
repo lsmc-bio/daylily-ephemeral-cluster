@@ -1,0 +1,31 @@
+{
+    "DataRepositoryTasks": [
+        {
+            "TaskId": "task-00da33f34d2d1010c",
+            "Lifecycle": "SUCCEEDED",
+            "Type": "EXPORT_TO_REPOSITORY",
+            "CreationTime": "2026-05-12T22:53:46.156000-07:00",
+            "StartTime": "2026-05-12T22:53:49.991000-07:00",
+            "EndTime": "2026-05-12T22:54:26.073000-07:00",
+            "ResourceARN": "arn:aws:fsx:us-west-2:108782052779:task/task-00da33f34d2d1010c",
+            "Tags": [],
+            "FileSystemId": "fs-0848800bb2b15d2f9",
+            "Paths": [
+                "analysis_results/ubuntu/23ame-ilmn-1-bylane/daylily-omics-analysis/results/day/hg38/reports/DAY_final_multiqc.html",
+                "analysis_results/ubuntu/23ame-ilmn-1-bylane/daylily-omics-analysis/results/day/hg38/reports/DAY_final_multiqc_data"
+            ],
+            "Status": {
+                "TotalCount": 41,
+                "SucceededCount": 41,
+                "FailedCount": 0,
+                "LastUpdatedTime": "2026-05-12T22:54:13.651000-07:00"
+            },
+            "Report": {
+                "Enabled": true,
+                "Path": "s3://lsmc-dayoa-omics-analysis-us-west-2/FSxLustre20260509T204833Z/daylily-monitor/1778651625/export-report",
+                "Format": "REPORT_CSV_20191124",
+                "Scope": "FAILED_FILES_ONLY"
+            }
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+DAY-EC activated.
+DAY-EC activated.
+date=2026-05-10T19:54:37Z
+ 477431  477365       01:43  0.0  0.0 python3 /home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py
+combined_files
+2026-05-10T19:31:02.4439274210 468827962 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa
+2026-05-10T19:40:38.8886835130 462224824 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa.bwt
+2026-05-10T19:40:43.0006817960 115556185 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa.pac
+2026-05-10T19:40:43.1206817460 118 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa.ann
+2026-05-10T19:40:43.1216817460 3949 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa.amb
+2026-05-10T19:43:36.7766088190 231112416 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa.sa
+2026-05-10T19:49:29.8094544080 1677 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/LSMC-HG003.bwa.stderr.log
+2026-05-10T19:52:54.8383539070 2292425 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/all_samples.R2.fq
+2026-05-10T19:54:11.2773192980 3049519 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/all_samples.R1.fq

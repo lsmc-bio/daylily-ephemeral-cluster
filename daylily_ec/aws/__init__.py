@@ -102,6 +102,7 @@ from daylily_ec.aws.spot_pricing import (
 from daylily_ec.aws.ssm import (
     HeadNodeTarget,
     SessionManagerPluginMissingError,
+    SessionManagerPluginUnsupportedError,
     SsmCommandFailedError,
     SsmCommandResult,
     SsmError,
@@ -224,4 +225,5 @@ __all__ = [
     "write_remote_text",
     "HeadNodeTarget",
     "SessionManagerPluginMissingError",
+    "SessionManagerPluginUnsupportedError",
 ]

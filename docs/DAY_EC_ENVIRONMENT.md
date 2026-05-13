@@ -16,7 +16,7 @@ This file defines the Conda environment shape and the non-Python operator toolin
 - `python`
 - `pip`
 - `awscli`
-- `aws-session-manager-plugin`
+- `aws-session-manager-plugin` 1.2.814.0 or newer
 - `bash`
 - `jq`
 - `yq`

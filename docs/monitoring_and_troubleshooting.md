@@ -47,6 +47,27 @@ Check the local plugin:
 session-manager-plugin
 ```
 
+If the local startup complains about missing `Standard_Stream` or
+`InteractiveCommands` plugin support, first verify that the checkout-managed
+toolchain is actually first on `PATH`:
+
+```bash
+source ./activate
+command -v aws
+aws --version
+command -v session-manager-plugin
+session-manager-plugin --version
+```
+
+Expected: both `aws` and `session-manager-plugin` come from the `DAY-EC`
+environment, and the Session Manager plugin is `1.2.814.0` or newer. If not,
+rebuild `DAY-EC`:
+
+```bash
+conda env remove -n DAY-EC
+source ./activate
+```
+
 If the shell opens but the environment feels wrong, reconnect and verify:
 
 ```bash

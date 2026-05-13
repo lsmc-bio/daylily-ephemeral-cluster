@@ -1,0 +1,208 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py", line 350, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py", line 338, in main
+    apply_sex_results(results)
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py", line 234, in apply_sex_results
+    shutil.copy2(path, backup)
+  File "/home/ubuntu/miniconda3/envs/DAY-EC/lib/python3.11/shutil.py", line 448, in copy2
+    copyfile(src, dst, follow_symlinks=follow_symlinks)
+  File "/home/ubuntu/miniconda3/envs/DAY-EC/lib/python3.11/shutil.py", line 258, in copyfile
+    with open(dst, 'wb') as fdst:
+         ^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: '/fsx/data/staged_sample_data/remote_stage_20260510T130308Z/20260510T130308Z_samples.tsv.pre_combined_sexfix_1778443521'
+failed to run commands: exit status 1DAY-EC activated.
+DAY-EC activated.
+COMBINED_FASTQ	LSMC-HG003	read_pairs=2000
+COMBINED_FASTQ	LSMC-NTC	read_pairs=2000
+COMBINED_FASTQ	s74478	read_pairs=2000
+COMBINED_FASTQ	s77407	read_pairs=2000
+COMBINED_FASTQ	s77409	read_pairs=2000
+COMBINED_FASTQ	s77414	read_pairs=2000
+COMBINED_FASTQ	s77433	read_pairs=2000
+COMBINED_FASTQ	s77483	read_pairs=2000
+COMBINED_FASTQ	s77586	read_pairs=2000
+COMBINED_FASTQ	s77612	read_pairs=2000
+COMBINED_FASTQ	s77669	read_pairs=2000
+COMBINED_FASTQ	s77672	read_pairs=2000
+COMBINED_FASTQ	s77674	read_pairs=2000
+COMBINED_FASTQ	s77676	read_pairs=2000
+COMBINED_FASTQ	s77677	read_pairs=2000
+COMBINED_FASTQ	s77678	read_pairs=2000
+COMBINED_FASTQ	s77679	read_pairs=2000
+COMBINED_FASTQ	s77680	read_pairs=2000
+COMBINED_FASTQ	s77681	read_pairs=2000
+COMBINED_FASTQ	s77683	read_pairs=2000
+COMBINED_FASTQ	s77684	read_pairs=2000
+COMBINED_FASTQ	s77685	read_pairs=2000
+COMBINED_FASTQ	s77687	read_pairs=2000
+COMBINED_FASTQ	s77688	read_pairs=2000
+COMBINED_FASTQ	s77689	read_pairs=2000
+COMBINED_FASTQ	s77690	read_pairs=2000
+COMBINED_FASTQ	s77691	read_pairs=2000
+COMBINED_FASTQ	s77694	read_pairs=2000
+COMBINED_FASTQ	s77695	read_pairs=2000
+COMBINED_FASTQ	s77699	read_pairs=2000
+COMBINED_FASTQ	s77700	read_pairs=2000
+COMBINED_FASTQ	s77701	read_pairs=2000
+COMBINED_FASTQ	s77702	read_pairs=2000
+COMBINED_FASTQ	s77703	read_pairs=2000
+COMBINED_FASTQ	s77704	read_pairs=2000
+COMBINED_FASTQ	s77705	read_pairs=2000
+COMBINED_FASTQ	s77706	read_pairs=2000
+COMBINED_FASTQ	s77707	read_pairs=2000
+COMBINED_FASTQ	s77710	read_pairs=2000
+COMBINED_FASTQ	s77711	read_pairs=2000
+COMBINED_FASTQ	s77712	read_pairs=2000
+COMBINED_FASTQ	s77713	read_pairs=2000
+COMBINED_FASTQ	s77714	read_pairs=2000
+COMBINED_FASTQ	s77715	read_pairs=2000
+COMBINED_FASTQ	s77716	read_pairs=2000
+COMBINED_FASTQ	s77717	read_pairs=2000
+COMBINED_FASTQ	s77718	read_pairs=2000
+COMBINED_FASTQ	s77719	read_pairs=2000
+COMBINED_FASTQ	s77720	read_pairs=2000
+COMBINED_FASTQ	s77721	read_pairs=2000
+COMBINED_FASTQ	s77722	read_pairs=2000
+COMBINED_FASTQ	s77723	read_pairs=2000
+COMBINED_FASTQ	s77724	read_pairs=2000
+COMBINED_FASTQ	s77725	read_pairs=2000
+COMBINED_FASTQ	s77726	read_pairs=2000
+COMBINED_FASTQ	s77728	read_pairs=2000
+COMBINED_FASTQ	s77733	read_pairs=2000
+COMBINED_FASTQ	s77734	read_pairs=2000
+COMBINED_FASTQ	s77735	read_pairs=2000
+COMBINED_FASTQ	s77736	read_pairs=2000
+COMBINED_FASTQ	s77738	read_pairs=2000
+COMBINED_FASTQ	s77744	read_pairs=2000
+COMBINED_FASTQ	s77745	read_pairs=2000
+COMBINED_FASTQ	s77748	read_pairs=2000
+COMBINED_FASTQ	s77750	read_pairs=2000
+COMBINED_FASTQ	s77753	read_pairs=2000
+COMBINED_FASTQ	s77754	read_pairs=2000
+COMBINED_FASTQ	s77756	read_pairs=2000
+COMBINED_FASTQ	s77757	read_pairs=2000
+COMBINED_FASTQ	s77758	read_pairs=2000
+COMBINED_FASTQ	s77759	read_pairs=2000
+COMBINED_FASTQ	s77760	read_pairs=2000
+COMBINED_FASTQ	s77761	read_pairs=2000
+COMBINED_FASTQ	s77762	read_pairs=2000
+COMBINED_FASTQ	s77763	read_pairs=2000
+COMBINED_FASTQ	s77764	read_pairs=2000
+COMBINED_FASTQ	s77765	read_pairs=2000
+COMBINED_FASTQ	s77766	read_pairs=2000
+COMBINED_FASTQ	s77767	read_pairs=2000
+COMBINED_FASTQ	s77768	read_pairs=2000
+COMBINED_FASTQ	s77770	read_pairs=2000
+COMBINED_FASTQ	s77771	read_pairs=2000
+COMBINED_FASTQ	s77773	read_pairs=2000
+COMBINED_FASTQ	s77775	read_pairs=2000
+COMBINED_FASTQ	s77778	read_pairs=2000
+COMBINED_FASTQ	s77780	read_pairs=2000
+COMBINED_FASTQ	s77783	read_pairs=2000
+COMBINED_FASTQ	s77784	read_pairs=2000
+COMBINED_FASTQ	s77785	read_pairs=2000
+COMBINED_FASTQ	s77786	read_pairs=2000
+COMBINED_FASTQ	s77787	read_pairs=2000
+COMBINED_FASTQ	s77790	read_pairs=2000
+COMBINED_FASTQ	s77791	read_pairs=2000
+COMBINED_FASTQ	s77794	read_pairs=2000
+COMBINED_FASTQ	s77802	read_pairs=2000
+COMBINED_FASTQ	s77804	read_pairs=2000
+SEX_INFER	LSMC-HG003	male	high	chr1=1116	chrX=655	chrY=99	x_chr1=0.586918	y_chr1=0.08871	y_signal
+SEX_INFER	LSMC-NTC	female	high	chr1=199	chrX=3442	chrY=0	x_chr1=17.296482	y_chr1=0.0	no_y_signal
+SEX_INFER	s74478	male	high	chr1=1100	chrX=693	chrY=89	x_chr1=0.63	y_chr1=0.080909	y_signal
+SEX_INFER	s77407	male	high	chr1=792	chrX=439	chrY=172	x_chr1=0.554293	y_chr1=0.217172	y_signal
+SEX_INFER	s77409	male	high	chr1=1085	chrX=592	chrY=141	x_chr1=0.545622	y_chr1=0.129954	y_signal
+SEX_INFER	s77414	male	high	chr1=679	chrX=418	chrY=84	x_chr1=0.615611	y_chr1=0.123711	y_signal
+SEX_INFER	s77433	male	high	chr1=847	chrX=577	chrY=65	x_chr1=0.681228	y_chr1=0.076741	y_signal
+SEX_INFER	s77483	male	high	chr1=966	chrX=717	chrY=70	x_chr1=0.742236	y_chr1=0.072464	y_signal
+SEX_INFER	s77586	male	high	chr1=1008	chrX=750	chrY=114	x_chr1=0.744048	y_chr1=0.113095	y_signal
+SEX_INFER	s77612	male	high	chr1=854	chrX=569	chrY=62	x_chr1=0.666276	y_chr1=0.0726	y_signal
+SEX_INFER	s77669	male	high	chr1=889	chrX=564	chrY=67	x_chr1=0.634421	y_chr1=0.075366	y_signal
+SEX_INFER	s77672	male	high	chr1=1023	chrX=803	chrY=96	x_chr1=0.784946	y_chr1=0.093842	y_signal
+SEX_INFER	s77674	male	high	chr1=824	chrX=579	chrY=97	x_chr1=0.70267	y_chr1=0.117718	y_signal
+SEX_INFER	s77676	male	high	chr1=867	chrX=792	chrY=111	x_chr1=0.913495	y_chr1=0.128028	y_signal
+SEX_INFER	s77677	male	high	chr1=951	chrX=607	chrY=118	x_chr1=0.638275	y_chr1=0.12408	y_signal
+SEX_INFER	s77678	male	high	chr1=816	chrX=619	chrY=107	x_chr1=0.758578	y_chr1=0.131127	y_signal
+SEX_INFER	s77679	male	high	chr1=1048	chrX=670	chrY=184	x_chr1=0.639313	y_chr1=0.175573	y_signal
+SEX_INFER	s77680	male	high	chr1=762	chrX=616	chrY=97	x_chr1=0.808399	y_chr1=0.127297	y_signal
+SEX_INFER	s77681	male	high	chr1=810	chrX=693	chrY=109	x_chr1=0.855556	y_chr1=0.134568	y_signal
+SEX_INFER	s77683	male	high	chr1=915	chrX=662	chrY=78	x_chr1=0.723497	y_chr1=0.085246	y_signal
+SEX_INFER	s77684	male	high	chr1=993	chrX=756	chrY=125	x_chr1=0.761329	y_chr1=0.125881	y_signal
+SEX_INFER	s77685	male	high	chr1=760	chrX=427	chrY=43	x_chr1=0.561842	y_chr1=0.056579	y_signal
+SEX_INFER	s77687	male	high	chr1=824	chrX=769	chrY=182	x_chr1=0.933252	y_chr1=0.220874	y_signal
+SEX_INFER	s77688	male	high	chr1=1058	chrX=578	chrY=38	x_chr1=0.546314	y_chr1=0.035917	y_signal
+SEX_INFER	s77689	male	high	chr1=801	chrX=463	chrY=129	x_chr1=0.578027	y_chr1=0.161049	y_signal
+SEX_INFER	s77690	male	high	chr1=833	chrX=571	chrY=136	x_chr1=0.685474	y_chr1=0.163265	y_signal
+SEX_INFER	s77691	male	high	chr1=790	chrX=606	chrY=85	x_chr1=0.767089	y_chr1=0.107595	y_signal
+SEX_INFER	s77694	male	high	chr1=860	chrX=524	chrY=93	x_chr1=0.609302	y_chr1=0.10814	y_signal
+SEX_INFER	s77695	male	high	chr1=916	chrX=632	chrY=53	x_chr1=0.689956	y_chr1=0.05786	y_signal
+SEX_INFER	s77699	male	high	chr1=853	chrX=687	chrY=163	x_chr1=0.805393	y_chr1=0.19109	y_signal
+SEX_INFER	s77700	male	high	chr1=1140	chrX=531	chrY=69	x_chr1=0.465789	y_chr1=0.060526	y_signal
+SEX_INFER	s77701	male	high	chr1=914	chrX=849	chrY=41	x_chr1=0.928884	y_chr1=0.044858	y_signal
+SEX_INFER	s77702	male	high	chr1=1109	chrX=585	chrY=105	x_chr1=0.527502	y_chr1=0.09468	y_signal
+SEX_INFER	s77703	male	high	chr1=918	chrX=683	chrY=64	x_chr1=0.744009	y_chr1=0.069717	y_signal
+SEX_INFER	s77704	male	high	chr1=988	chrX=640	chrY=141	x_chr1=0.647773	y_chr1=0.142713	y_signal
+SEX_INFER	s77705	male	high	chr1=794	chrX=611	chrY=57	x_chr1=0.769521	y_chr1=0.071788	y_signal
+SEX_INFER	s77706	male	high	chr1=907	chrX=711	chrY=119	x_chr1=0.783903	y_chr1=0.131202	y_signal
+SEX_INFER	s77707	male	high	chr1=964	chrX=529	chrY=64	x_chr1=0.548755	y_chr1=0.06639	y_signal
+SEX_INFER	s77710	male	high	chr1=1083	chrX=625	chrY=113	x_chr1=0.577101	y_chr1=0.10434	y_signal
+SEX_INFER	s77711	male	high	chr1=894	chrX=609	chrY=96	x_chr1=0.681208	y_chr1=0.107383	y_signal
+SEX_INFER	s77712	male	high	chr1=558	chrX=509	chrY=32	x_chr1=0.912186	y_chr1=0.057348	y_signal
+SEX_INFER	s77713	male	high	chr1=897	chrX=599	chrY=96	x_chr1=0.667781	y_chr1=0.107023	y_signal
+SEX_INFER	s77714	male	high	chr1=931	chrX=639	chrY=171	x_chr1=0.686359	y_chr1=0.183673	y_signal
+SEX_INFER	s77715	male	high	chr1=853	chrX=628	chrY=119	x_chr1=0.736225	y_chr1=0.139508	y_signal
+SEX_INFER	s77716	male	high	chr1=833	chrX=615	chrY=120	x_chr1=0.738295	y_chr1=0.144058	y_signal
+SEX_INFER	s77717	male	high	chr1=899	chrX=614	chrY=41	x_chr1=0.682981	y_chr1=0.045606	y_signal
+SEX_INFER	s77718	male	high	chr1=955	chrX=568	chrY=132	x_chr1=0.594764	y_chr1=0.13822	y_signal
+SEX_INFER	s77719	male	high	chr1=1088	chrX=604	chrY=97	x_chr1=0.555147	y_chr1=0.089154	y_signal
+SEX_INFER	s77720	male	high	chr1=701	chrX=603	chrY=103	x_chr1=0.8602	y_chr1=0.146933	y_signal
+SEX_INFER	s77721	male	high	chr1=845	chrX=528	chrY=49	x_chr1=0.624852	y_chr1=0.057988	y_signal
+SEX_INFER	s77722	male	high	chr1=809	chrX=595	chrY=113	x_chr1=0.735476	y_chr1=0.139679	y_signal
+SEX_INFER	s77723	male	high	chr1=1087	chrX=605	chrY=93	x_chr1=0.556578	y_chr1=0.085557	y_signal
+SEX_INFER	s77724	male	high	chr1=867	chrX=598	chrY=84	x_chr1=0.689735	y_chr1=0.096886	y_signal
+SEX_INFER	s77725	male	high	chr1=938	chrX=632	chrY=113	x_chr1=0.673774	y_chr1=0.120469	y_signal
+SEX_INFER	s77726	male	high	chr1=837	chrX=675	chrY=87	x_chr1=0.806452	y_chr1=0.103943	y_signal
+SEX_INFER	s77728	male	high	chr1=502	chrX=376	chrY=19	x_chr1=0.749004	y_chr1=0.037849	y_signal
+SEX_INFER	s77733	male	high	chr1=875	chrX=653	chrY=88	x_chr1=0.746286	y_chr1=0.100571	y_signal
+SEX_INFER	s77734	male	high	chr1=810	chrX=483	chrY=72	x_chr1=0.596296	y_chr1=0.088889	y_signal
+SEX_INFER	s77735	male	high	chr1=990	chrX=717	chrY=47	x_chr1=0.724242	y_chr1=0.047475	y_signal
+SEX_INFER	s77736	male	high	chr1=997	chrX=601	chrY=93	x_chr1=0.602808	y_chr1=0.09328	y_signal
+SEX_INFER	s77738	male	high	chr1=950	chrX=578	chrY=68	x_chr1=0.608421	y_chr1=0.071579	y_signal
+SEX_INFER	s77744	male	high	chr1=988	chrX=796	chrY=162	x_chr1=0.805668	y_chr1=0.163968	y_signal
+SEX_INFER	s77745	male	high	chr1=998	chrX=780	chrY=99	x_chr1=0.781563	y_chr1=0.099198	y_signal
+SEX_INFER	s77748	male	high	chr1=905	chrX=613	chrY=81	x_chr1=0.677348	y_chr1=0.089503	y_signal
+SEX_INFER	s77750	male	high	chr1=787	chrX=487	chrY=104	x_chr1=0.618806	y_chr1=0.132147	y_signal
+SEX_INFER	s77753	male	high	chr1=1110	chrX=674	chrY=88	x_chr1=0.607207	y_chr1=0.079279	y_signal
+SEX_INFER	s77754	male	high	chr1=967	chrX=670	chrY=122	x_chr1=0.692865	y_chr1=0.126163	y_signal
+SEX_INFER	s77756	male	high	chr1=955	chrX=559	chrY=29	x_chr1=0.58534	y_chr1=0.030366	y_signal
+SEX_INFER	s77757	male	high	chr1=838	chrX=578	chrY=89	x_chr1=0.689737	y_chr1=0.106205	y_signal
+SEX_INFER	s77758	male	high	chr1=774	chrX=418	chrY=117	x_chr1=0.540052	y_chr1=0.151163	y_signal
+SEX_INFER	s77759	male	high	chr1=834	chrX=518	chrY=72	x_chr1=0.621103	y_chr1=0.086331	y_signal
+SEX_INFER	s77760	male	high	chr1=606	chrX=328	chrY=31	x_chr1=0.541254	y_chr1=0.051155	y_signal
+SEX_INFER	s77761	male	high	chr1=849	chrX=559	chrY=72	x_chr1=0.658422	y_chr1=0.084806	y_signal
+SEX_INFER	s77762	male	high	chr1=1114	chrX=575	chrY=96	x_chr1=0.516158	y_chr1=0.086176	y_signal
+SEX_INFER	s77763	male	high	chr1=818	chrX=572	chrY=93	x_chr1=0.699267	y_chr1=0.113692	y_signal
+SEX_INFER	s77764	male	high	chr1=761	chrX=677	chrY=106	x_chr1=0.889619	y_chr1=0.13929	y_signal
+SEX_INFER	s77765	male	high	chr1=909	chrX=503	chrY=106	x_chr1=0.553355	y_chr1=0.116612	y_signal
+SEX_INFER	s77766	male	high	chr1=877	chrX=565	chrY=121	x_chr1=0.644242	y_chr1=0.13797	y_signal
+SEX_INFER	s77767	male	high	chr1=912	chrX=628	chrY=187	x_chr1=0.688596	y_chr1=0.205044	y_signal
+SEX_INFER	s77768	male	high	chr1=940	chrX=682	chrY=84	x_chr1=0.725532	y_chr1=0.089362	y_signal
+SEX_INFER	s77770	male	high	chr1=714	chrX=461	chrY=102	x_chr1=0.645658	y_chr1=0.142857	y_signal
+SEX_INFER	s77771	male	high	chr1=871	chrX=527	chrY=92	x_chr1=0.605052	y_chr1=0.105626	y_signal
+SEX_INFER	s77773	male	high	chr1=980	chrX=597	chrY=143	x_chr1=0.609184	y_chr1=0.145918	y_signal
+SEX_INFER	s77775	male	high	chr1=932	chrX=556	chrY=155	x_chr1=0.596567	y_chr1=0.166309	y_signal
+SEX_INFER	s77778	male	high	chr1=1042	chrX=485	chrY=140	x_chr1=0.465451	y_chr1=0.134357	y_signal
+SEX_INFER	s77780	male	high	chr1=834	chrX=653	chrY=73	x_chr1=0.782974	y_chr1=0.08753	y_signal
+SEX_INFER	s77783	male	high	chr1=627	chrX=582	chrY=45	x_chr1=0.92823	y_chr1=0.07177	y_signal
+SEX_INFER	s77784	male	high	chr1=923	chrX=639	chrY=62	x_chr1=0.692308	y_chr1=0.067172	y_signal
+SEX_INFER	s77785	male	high	chr1=672	chrX=532	chrY=48	x_chr1=0.791667	y_chr1=0.071429	y_signal
+SEX_INFER	s77786	male	high	chr1=827	chrX=669	chrY=79	x_chr1=0.808948	y_chr1=0.095526	y_signal
+SEX_INFER	s77787	male	high	chr1=872	chrX=572	chrY=138	x_chr1=0.655963	y_chr1=0.158257	y_signal
+SEX_INFER	s77790	male	high	chr1=1068	chrX=717	chrY=78	x_chr1=0.671348	y_chr1=0.073034	y_signal
+SEX_INFER	s77791	male	high	chr1=1019	chrX=482	chrY=138	x_chr1=0.473013	y_chr1=0.135427	y_signal
+SEX_INFER	s77794	male	high	chr1=710	chrX=547	chrY=47	x_chr1=0.770423	y_chr1=0.066197	y_signal
+SEX_INFER	s77802	male	high	chr1=949	chrX=658	chrY=149	x_chr1=0.693361	y_chr1=0.157007	y_signal
+SEX_INFER	s77804	male	high	chr1=949	chrX=800	chrY=68	x_chr1=0.842993	y_chr1=0.071654	y_signal

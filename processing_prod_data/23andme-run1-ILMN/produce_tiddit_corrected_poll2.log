@@ -1,0 +1,138 @@
+DAY-EC activated.
+DAY-EC activated.
+TMUX
+not-running
+STATUS
+{
+  "command": "bin/day_run produce_tiddit --config aligners=['sent'] dedupers=['dppl'] sv_callers=['tiddit'] -p -j 100 -k",
+  "completed_at": "2026-05-10T21:43:02Z",
+  "exit_code": 0,
+  "note": "rerun with aligner/deduper selectors because sv_callers-only produced no TIDDIT jobs",
+  "repo_path": "/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis",
+  "session_name": "23andme-run1-ILMN",
+  "started_at": "2026-05-10T21:42:33Z"
+}
+LOG_TAIL
+The Daylily CLI is now available.
+Available commands (tab completion is enabled for all):
+ 
+	(day-activate / dy-a) [slurm|local] ([hg38|hg38_broad|b37])- Activate a Slurm or local environment.
+	                           
+	{day-set-genome-build / dy-g) [b37|hg38|hg38_broad] - Set the genome build for the current environment.
+	                           
+	(day-run / dy-r)          - Run a command in the current environment.
+	                           <tab> for exposed targets, -<tab> for all command line flags.
+	                           
+	(day-monitor / dy-m)      - Monitor workflow status (Snakemake, SLURM, logs).
+	                           Use --block-and-poll to wait for completion.
+	                           
+	(day-deactivate / dy-d)   - Deactivate the current environment.
+	                           Use 'dy-d reset' to hard reset the environment.
+	                           
+	                           
+	                           
+	                           
+	. To Stage Sample Data, see daylily-ephemeral-cluster docs for running ~/projects/daylily-ephemeral-cluster/bin/daylily-stage-analysis-samples-headnode 
+	  ... which once run, you will copy the samples.tsv and units.tsv files to config/ in this directory.
+	                           
+	(example): ACTIVATE AN ANALYSIS ENV
+
+
+
+
+
+		dy-a slurm hg38 # or hg38_broad or b37
+
+	(example): RUN ANALYSES
+
+		cp .test_data/data/0.01xwgs_HG002_hg38.samples.tsv config/samples.tsv
+
+		cp .test_data/data/0.01xwgs_HG002_hg38.units.tsv config/units.tsv
+
+
+
+		# Use target names directly (tab-complete available):
+
+		dy-r produce_snv_concordances -p -k -j 20 -n   # Illumina short-read SNV concordance
+
+		dy-r produce_alignstats -p -k -j 20 -n         # Alignment statistics
+
+
+
+		# Platform-specific targets:
+
+		dy-r produce_sentdont_vcf -p -k -j 20 -n       # ONT SNV calling
+
+		dy-r produce_sentdpb_vcf -p -k -j 20 -n        # PacBio SNV calling
+
+		dy-r produce_sentdug_vcf -p -k -j 20 -n        # Ultima SNV calling (use hg38_broad)
+
+
+
+		# Hybrid workflow targets:
+
+		dy-r produce_sentdhio_vcf -p -k -j 20 -n       # Hybrid Illumina+ONT CLI
+
+		dy-r produce_sentdhuo_vcf -p -k -j 20 -n       # Hybrid Ultima+ONT CLI (use hg38_broad)
+
+		dy-r produce_sentdhiom_vcf -p -k -j 20 -n      # Hybrid Illumina+ONT Modular
+
+		dy-r produce_sentdhuom_vcf -p -k -j 20 -n      # Hybrid Ultima+ONT Modular (use hg38_broad)
+
+
+
+		# Remove -n to execute (not dry-run)
+
+Requesting profile: slurm
+Attempting to deactivate existing environments & re-init with --project fk-260509-use .
+Remote call detected. Activating conda hack
+[1m[48;5;88m[38;5;79mYour config files in /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm are newer than the templates. clear 2 go.[0m
+yq is already installed.
+WARNING: sentieon lic file /fsx/data/cached_envs/x.lic not found.
+Detected sentieon license file: /fsx/data/cached_envs/Life_Sciences_Manufacturing_Corporation_eval.lic will be used and overrides what is in ~/.config/daylily/daylily_cli_global.yaml
+
+!!!!
+!!!!
+    WARNING: gittag:null not found touched in  ~/.config/daylily/null 
+     This might be fine if you have cloned a more recent release of daylily compared to the tagged version used to create this ephemeral cluster.
+     ... however, this is not expected. If you are running an ephemeral cluster headnode for days+, this is not the intended use of daylily, a fresh build might be called for.
+     This is checked by testing if ~/.config/daylily/null exists .
+!!!!
+[5m[48;5;118m[30m > >> >>> [0m[1m[40m[38;5;118m  genome build set to ::: hg38  [0m
+[1m[40m[38;5;118m       _______ GREAT SUCCESS _______       [0m
+Executing corrected TIDDIT production run at 2026-05-10T21:42:44Z
+Remote call detected. Activating conda hack
+[1m[48;5;88m[38;5;79mYour config files in /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm are newer than the templates. clear 2 go.[0m
+[1m[40m[38;5;118mExecuting: snakemake --profile=/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm produce_tiddit --config aligners=['sent'] dedupers=['dppl'] sv_callers=['tiddit'] -p -j 100 -k[0m
+Config file config/global.yaml is extended by additional config specified via the command line.
+loading global: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/global_AWSPC.yaml
+Config file config/global_AWSPC.yaml is extended by additional config specified via the command line.
+loading profile rule_config: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm/rule_config.yaml
+Config file config/day_profiles/slurm/rule_config.yaml is extended by additional config specified via the command line.
+INFO::: The genome build hg38 is supported.  The genome build prefix is 'chr''.
+[1m[38;5;79maligners: [sent][0m
+[1m[38;5;79maligners (final): [sent][0m
+[1m[38;5;79mdeduper (final): [dmd][0m
+[1m[48;5;166m[38;5;79m...WARNING: No snv_callers set in the config.[0m
+[1m[38;5;79mSNV Callers (final): [][0m
+[1m[38;5;79mSomatic SNV Callers:[senttn][0m
+[1m[38;5;79mSV Callers:[tiddit][0m
+A    N   A   L  Y S I S    SAMPLE TABLE DETECTED ::: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/samples.tsv
+A    N   A   L  Y S I S    UNIT TABLE DETECTED ::: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/units.tsv
+Building DAG of jobs...
+Pulling singularity image docker://quay.io/biocontainers/tiddit:3.7.0--py39h24fbfe6_0.
+WorkflowError:
+Failed to pull singularity image from docker://quay.io/biocontainers/tiddit:3.7.0--py39h24fbfe6_0:
+INFO:    Converting OCI blobs to SIF format
+WARNING: 'nodev' mount option set on /dev/shm, it could be a source of failure during build process
+INFO:    Starting build...
+INFO:    Fetching OCI image...
+INFO:    Extracting OCI image...
+FATAL:   While making image from oci registry: error fetching image to cache: while building SIF from layers: packer failed to pack: while unpacking rootfs: while unpacking layer sha256:2538782429988dbda330cf46b8b849445bd5f9880ffa5ec1b35c8cb7938a62f7: unpack entry: usr/local/bin/openssl: apply hdr metadata: restore chmod metadata: /dev/shm/build-temp-1076222618/rootfs/usr/local/bin/openssl: unpriv.chmod: chmod /dev/shm/build-temp-1076222618/rootfs/usr/local/bin/openssl: no such file or directory
+
+[5m[48;5;118m[30mRETURN CODE: 0[0m
+RETURN CODE: 0
+COMPLETED_AT=2026-05-10T21:43:02Z
+TIDDIT_COUNTS
+0
+0

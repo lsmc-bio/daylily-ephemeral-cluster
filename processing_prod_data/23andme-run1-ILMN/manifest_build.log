@@ -1,0 +1,7 @@
+observed_fastq_objects=1552
+observed_pairs=776
+observed_named_pairs=768
+observed_undetermined_pairs=8
+sample_sheet_named_samples=96
+manifest_rows=768
+manifest_path=/Users/jmajor/projects/lsmc/bfx_pipe/daylily-ephemeral-cluster/processing_prod_data/23andme-run1-ILMN/analysis_samples_manifest.tsv

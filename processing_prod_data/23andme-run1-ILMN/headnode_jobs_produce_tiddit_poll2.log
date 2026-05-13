@@ -1,0 +1,17 @@
+DAY-EC activated.
+DAY-EC activated.
+JOBID  PARTITION  CPUS  ST  NODELIST  MIN_CPUS  STATE  MIN_MEMORY  TIME  NODES  NAME
+1556  i192  64  R  i192-dy-all-1  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG007-D30-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG007-D30-0-D0-PCR-FREE-ILMN-NOVASEQ.28.out
+1557  i192  64  R  i192-dy-all-1  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG005-D20-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG005-D20-0-D0-PCR-FREE-ILMN-NOVASEQ.48.out
+1560  i192  64  R  i192-dy-all-1  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG006-D30-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG006-D30-0-D0-PCR-FREE-ILMN-NOVASEQ.24.out
+1561  i192  64  R  i192-dy-all-4  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG003-D20-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG003-D20-0-D0-PCR-FREE-ILMN-NOVASEQ.40.out
+1564  i192  64  R  i192-dy-all-4  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG006-D20-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG006-D20-0-D0-PCR-FREE-ILMN-NOVASEQ.52.out
+1565  i192  64  R  i192-dy-all-4  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG001-D20-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG001-D20-0-D0-PCR-FREE-ILMN-NOVASEQ.32.out
+1577  i192  64  R  i192-dy-all-16  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG002-D30-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG002-D30-0-D0-PCR-FREE-ILMN-NOVASEQ.8.out
+1578  i192  64  R  i192-dy-all-16  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG004-D20-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG004-D20-0-D0-PCR-FREE-ILMN-NOVASEQ.44.out
+1574  i192  64  R  i192-dy-all-12  64  RUNNING  62.50G  8:29  1  verifybamid2_contam-R99-HG002-D20-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG002-D20-0-D0-PCR-FREE-ILMN-NOVASEQ.36.out
+1571  i192  64  R  i192-dy-all-12  64  RUNNING  62.50G  8:30  1  verifybamid2_contam-R99-HG003-D30-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG003-D30-0-D0-PCR-FREE-ILMN-NOVASEQ.12.out
+1573  i192  64  R  i192-dy-all-12  64  RUNNING  62.50G  8:30  1  verifybamid2_contam-R99-HG004-D30-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG004-D30-0-D0-PCR-FREE-ILMN-NOVASEQ.16.out
+1581  i192mem  64  R  i192mem-dy-all-3  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG001-D30-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG001-D30-0-D0-PCR-FREE-ILMN-NOVASEQ.1.out
+1582  i192mem  64  R  i192mem-dy-all-3  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG007-D20-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG007-D20-0-D0-PCR-FREE-ILMN-NOVASEQ.56.out
+1583  i192mem  64  R  i192mem-dy-all-3  64  RUNNING  62.50G  8:00  1  verifybamid2_contam-R99-HG005-D30-0-D0-PCR-FREE-ILMN-NOVASEQ --output=logs/slurm/verifybamid2_contam/verifybamid2_contam.R99-HG005-D30-0-D0-PCR-FREE-ILMN-NOVASEQ.20.out

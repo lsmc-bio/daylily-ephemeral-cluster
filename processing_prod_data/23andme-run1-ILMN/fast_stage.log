@@ -1,0 +1,32 @@
+remote_fsx_stage=/fsx/data/staged_sample_data/remote_stage_20260510T130308Z
+merged_fastq_jobs=192
+samples_rows=96
+units_rows=96
+Traceback (most recent call last):
+  File "/Users/jmajor/projects/lsmc/bfx_pipe/daylily-ephemeral-cluster/processing_prod_data/23andme-run1-ILMN/scripts/fast_stage_merged.py", line 373, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/jmajor/projects/lsmc/bfx_pipe/daylily-ephemeral-cluster/processing_prod_data/23andme-run1-ILMN/scripts/fast_stage_merged.py", line 348, in main
+    FastStager(workers=args.workers).run(copy_jobs)
+  File "/Users/jmajor/projects/lsmc/bfx_pipe/daylily-ephemeral-cluster/processing_prod_data/23andme-run1-ILMN/scripts/fast_stage_merged.py", line 301, in run
+    print(future.result(), flush=True)
+          ^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.12_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.12/3.12.12_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+  File "/opt/homebrew/Cellar/python@3.12/3.12.12_1/Frameworks/Python.framework/Versions/3.12/lib/python3.12/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/jmajor/projects/lsmc/bfx_pipe/daylily-ephemeral-cluster/processing_prod_data/23andme-run1-ILMN/scripts/fast_stage_merged.py", line 279, in copy_job
+    self.s3.complete_multipart_upload(
+  File "/opt/homebrew/lib/python3.12/site-packages/botocore/client.py", line 602, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.12/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/lib/python3.12/site-packages/botocore/client.py", line 1078, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.exceptions.ClientError: An error occurred (EntityTooSmall) when calling the CompleteMultipartUpload operation: Your proposed upload is smaller than the minimum allowed size

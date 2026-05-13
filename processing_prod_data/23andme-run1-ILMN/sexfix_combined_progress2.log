@@ -1,0 +1,6 @@
+DAY-EC activated.
+DAY-EC activated.
+date=2026-05-10T19:58:12Z
+ 477431  477365       05:17  0.0  0.0 python3 /home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_combined_and_rerun.py
+2026-05-10T19:56:33.9942555370 3806706 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/all_samples.R1.fq
+2026-05-10T19:57:34.3382290200 3806706 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/all_samples.R2.fq

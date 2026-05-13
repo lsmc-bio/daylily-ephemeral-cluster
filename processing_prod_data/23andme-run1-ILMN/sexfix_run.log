@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_and_rerun.py", line 295, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_and_rerun.py", line 258, in main
+    result = infer_one(sample, unit["ILMN_R1_PATH"], unit["ILMN_R2_PATH"], mini_ref)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_and_rerun.py", line 170, in infer_one
+    raise RuntimeError(f"bwa mem failed for {sample} with rc={rc}; see {WORKDIR}/{sample}.bwa.stderr.log")
+RuntimeError: bwa mem failed for LSMC-HG003 with rc=1; see /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/LSMC-HG003.bwa.stderr.log
+failed to run commands: exit status 1DAY-EC activated.
+DAY-EC activated.

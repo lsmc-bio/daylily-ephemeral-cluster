@@ -1,0 +1,138 @@
+DAY-EC activated.
+DAY-EC activated.
+TMUX
+running
+STATUS
+{
+  "command": "bin/day_run produce_tiddit --config aligners=['sent'] dedupers=['dppl'] sv_callers=['tiddit'] -p -j 100 -k",
+  "completed_at": null,
+  "exit_code": null,
+  "note": "TIDDIT retry with Singularity temp/cache on FSx",
+  "repo_path": "/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis",
+  "session_name": "23andme-run1-ILMN",
+  "started_at": "2026-05-10T21:46:09Z"
+}
+LOG_TAIL
+            fi
+        done
+
+        # Check if jemalloc was found and set LD_PRELOAD accordingly
+        if [[ -n "$jemalloc_path" ]]; then
+            export LD_PRELOAD="$jemalloc_path";
+            export MALLOC_CONF=background_thread:true,metadata_thp:auto,dirty_decay_ms:5000,muzzy_decay_ms:5000;
+            echo "LD_PRELOAD set to: $LD_PRELOAD" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+            echo "MALLOC_CONF set to: $MALLOC_CONF" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+        else
+            echo "libjemalloc not found in CONDA_PREFIX=$CONDA_PREFIX (searched lib, lib64, lib/x86_64-linux-gnu)." >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+            echo "libjemalloc not found in CONDA_PREFIX=$CONDA_PREFIX (searched lib, lib64, lib/x86_64-linux-gnu).";
+            exit 3;
+        fi
+
+        if [[ -n "" ]]; then
+            echo "ILMN_TRIM_READ_LENGTH: trimming reads via seqkit subseq" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+        fi
+
+        LD_PRELOAD=$LD_PRELOAD /fsx/data/cached_envs/sentieon-genomics-202503.02/bin/sentieon bwa mem         -t 96    -k 19 -Y -M -K 10000000           -x /fsx/data/cached_envs/sentieon-genomics-202503.02/bundles/SentieonIlluminaWGS2.2.bundle/bwa.model         -R "@RG\tID:20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ-$epocsec\tSM:20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ\tLB:20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ-LB-1\tPL:ILLUMINA"         /fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta           <(   igzip -cd -T 32  -q  results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.R1.fastq.gz  )              <(   igzip -cd -T 32  -q  results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.R2.fastq.gz  )    | mbuffer -m 128G -q -s 2M           | /fsx/data/cached_envs/sentieon-genomics-202503.02/bin/sentieon  util sort         -t  96         --reference /fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta         --cram_write_options version=3.0,compressor=rans         --sortblock_thread_count 96         --bam_compression 1         --temp_dir "$sort_tmp"         --intermediate_compress_level 1          --block_size 4G           --sam2bam         -o results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.bam - >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+
+        #samtools index -b -@ 192 results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.bam.bai  >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+
+        end_time=$(date +%s);
+    	elapsed_time=$((($end_time - $start_time) / 60));
+        echo "Elapsed-Time-min:	$itype	$elapsed_time" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77758-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+        
+Submitted job 352 with external jobid '1692'.
+
+[Sun May 10 21:47:30 2026]
+rule sentieon_bwa_sort:
+    input: results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.dirsetup.ready, results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.R1.fastq.gz, results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.R2.fastq.gz
+    output: results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.bam, results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.bam.bai
+    log: results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log
+    jobid: 447
+    benchmark: results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/benchmarks/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.alNsort.bench.tsv
+    reason: Missing output files: results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.bam.bai, results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.bam; Input files updated by another job: results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.dirsetup.ready, results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.R2.fastq.gz, results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.R1.fastq.gz
+    wildcards: sample=20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ
+    priority: 5
+    threads: 192
+    resources: mem_mb=300000, mem_mib=286103, disk_mb=1000, disk_mib=954, tmpdir=<TBD>, threads=192, time=5440, partition=i192mem,i192bigmem, vcpu=192, distribution=block, exclusive=, constraint=, exclude=, include=
+
+
+
+        if [ -z "$SENTIEON_LICENSE" ]; then
+            echo "SENTIEON_LICENSE not set. Please set the SENTIEON_LICENSE environment variable to the license file path & make this update to your dyinit file as well." >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+            exit 3;
+        fi
+
+        if [ ! -f "$SENTIEON_LICENSE" ]; then
+            echo "The file referenced by SENTIEON_LICENSE ('$SENTIEON_LICENSE') does not exist. Please provide a valid file path." >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+            exit 4;
+        fi
+
+        TOKEN=$(curl -X PUT 'http://169.254.169.254/latest/api/token' -H 'X-aws-ec2-metadata-token-ttl-seconds: 21600');
+        itype=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-type);
+        echo "INSTANCE TYPE: $itype" > results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+        start_time=$(date +%s);
+        export bwt_max_mem=180G ;
+        epocsec=$(date +'%s');
+
+        ulimit -n 65536 || echo "ulimit mod failed" > results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+
+        timestamp=$(date +%Y%m%d%H%M%S)_$$;
+        main_bashpid=${BASHPID:-};
+        tmp_root=$(dirname results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log)/../tmp;
+        mkdir -p "$tmp_root";
+        export TMPDIR="$tmp_root";
+        meta_tmp=$TMPDIR/sentieon_meta_$timestamp;
+        sort_tmp=$TMPDIR/sentieon_sort_$timestamp;
+        export SENTIEON_TMPDIR=$TMPDIR/sentieon_driver_tmp_$timestamp;
+        export APPTAINER_HOME=$meta_tmp/apptainer_home;
+
+        mkdir -p "$sort_tmp" "$SENTIEON_TMPDIR" "$APPTAINER_HOME";
+        trap 'status=$?; if [ "${BASHPID:-}" != "$main_bashpid" ]; then exit "$status"; fi; echo "Cleanup TMPDIR_BASE=$TMPDIR meta_tmp=$meta_tmp sort_tmp=$sort_tmp SENTIEON_TMPDIR=$SENTIEON_TMPDIR APPTAINER_HOME=$APPTAINER_HOME status=$status" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1; df -h "$TMPDIR" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1 || true; ls -ld "$TMPDIR" "$meta_tmp" "$sort_tmp" "$SENTIEON_TMPDIR" "$APPTAINER_HOME" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1 || true; find "$meta_tmp" -maxdepth 3 -type f -ls 2>/dev/null | head -200 >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1 || true; find "$sort_tmp" -maxdepth 3 -type f -ls 2>/dev/null | head -200 >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1 || true; find "$SENTIEON_TMPDIR" -maxdepth 3 -type f -ls 2>/dev/null | head -200 >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1 || true; if [ "$status" -eq 0 ]; then rm -rf "$meta_tmp" "$sort_tmp" "$SENTIEON_TMPDIR" 2>/dev/null || true; else echo "Preserving scratch after failure under $TMPDIR" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1; fi; trap - EXIT; exit "$status"' EXIT;
+        echo "TMPDIR_BASE: $TMPDIR" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+        echo "META_TMP: $meta_tmp" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+        echo "SORT_TMP: $sort_tmp" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+        echo "SENTIEON_TMPDIR: $SENTIEON_TMPDIR" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+        echo "APPTAINER_HOME: $APPTAINER_HOME" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+
+        # Find the jemalloc library in the active conda environment
+        jemalloc_path="";
+        for _dir in "$CONDA_PREFIX/lib" "$CONDA_PREFIX/lib64" "$CONDA_PREFIX/lib/x86_64-linux-gnu"; do
+            if [[ -d "$_dir" ]]; then
+                for _ext in so dylib; do
+                    _candidate=$(find "$_dir" -maxdepth 1 -name "libjemalloc*.$_ext*" 2>/dev/null | head -n 1);
+                    if [[ -n "$_candidate" && -r "$_candidate" ]]; then
+                        jemalloc_path="$_candidate";
+                        break 2;
+                    fi
+                done
+            fi
+        done
+
+        # Check if jemalloc was found and set LD_PRELOAD accordingly
+        if [[ -n "$jemalloc_path" ]]; then
+            export LD_PRELOAD="$jemalloc_path";
+            export MALLOC_CONF=background_thread:true,metadata_thp:auto,dirty_decay_ms:5000,muzzy_decay_ms:5000;
+            echo "LD_PRELOAD set to: $LD_PRELOAD" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+            echo "MALLOC_CONF set to: $MALLOC_CONF" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+        else
+            echo "libjemalloc not found in CONDA_PREFIX=$CONDA_PREFIX (searched lib, lib64, lib/x86_64-linux-gnu)." >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log;
+            echo "libjemalloc not found in CONDA_PREFIX=$CONDA_PREFIX (searched lib, lib64, lib/x86_64-linux-gnu).";
+            exit 3;
+        fi
+
+        if [[ -n "" ]]; then
+            echo "ILMN_TRIM_READ_LENGTH: trimming reads via seqkit subseq" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+        fi
+
+        LD_PRELOAD=$LD_PRELOAD /fsx/data/cached_envs/sentieon-genomics-202503.02/bin/sentieon bwa mem         -t 96    -k 19 -Y -M -K 10000000           -x /fsx/data/cached_envs/sentieon-genomics-202503.02/bundles/SentieonIlluminaWGS2.2.bundle/bwa.model         -R "@RG\tID:20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ-$epocsec\tSM:20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ\tLB:20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ-LB-1\tPL:ILLUMINA"         /fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta           <(   igzip -cd -T 32  -q  results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.R1.fastq.gz  )              <(   igzip -cd -T 32  -q  results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.R2.fastq.gz  )    | mbuffer -m 128G -q -s 2M           | /fsx/data/cached_envs/sentieon-genomics-202503.02/bin/sentieon  util sort         -t  96         --reference /fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta         --cram_write_options version=3.0,compressor=rans         --sortblock_thread_count 96         --bam_compression 1         --temp_dir "$sort_tmp"         --intermediate_compress_level 1          --block_size 4G           --sam2bam         -o results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.bam - >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+
+        #samtools index -b -@ 192 results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.bam.bai  >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+
+        end_time=$(date +%s);
+    	elapsed_time=$((($end_time - $start_time) / 60));
+        echo "Elapsed-Time-min:	$itype	$elapsed_time" >> results/day/hg38/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ/align/sent/logs/20260507-LH01106-0005-A23K3JVLT4-s77785-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ.sent.sort.log 2>&1;
+        
+Submitted job 447 with external jobid '1693'.
+TIDDIT_COUNTS
+0
+0

@@ -10,7 +10,8 @@
 
 - All SSM interactive sessions and command payloads that interact with headnodes must run as `ubuntu` in a bash login shell.
 - Do not use `root` for headnode work. The `ubuntu` user is in sudoers; use targeted `sudo` from `ubuntu` only when escalation is required.
-- On DayOA headnodes, use `bash -l` / `bash -lc` for command execution so `dyoainit` shell setup and aliases such as `dy-a` and `dy-r` are available. Non-login shells can silently miss those aliases.
+- On DayOA headnodes, run workflow-control payloads in an interactive login bash shell as `ubuntu`: use `sudo -iu ubuntu bash -il` or an existing tmux pane that is already a `bash -il` login shell. Do not add other shell flags or preface the payload with `set -euo pipefail` before sourcing DayOA setup.
+- For remote DayOA launch/control work, initialize and run with the repo scripts inside that login shell: `source dyoainit`, then `source bin/day_activate slurm <genome_build>`, then `bin/day_run ...`. The `dy-a` and `dy-r` aliases are only reliable in an already-interactive shell; do not depend on them from non-interactive SSM command payloads.
 - `/fsx/data` is read-only and always will be; never write, copy, stage, or create temporary files under `/fsx/data`.
 - To make data appear under `/fsx/data`, copy or sync it to the backing S3 bucket/prefix mounted by FSx; never treat the local `/fsx/data` mount as writable.
 - Interactive sessions must use `SSM-SessionManagerRunShell` configured with `runAsDefaultUser=ubuntu` and bash login-shell behavior.

@@ -1,0 +1,9 @@
+Terminated
+failed to run commands: exit status 143DAY-EC activated.
+DAY-EC activated.
+COMBINED_FASTQ	LSMC-HG003	read_pairs=2000
+COMBINED_FASTQ	LSMC-NTC	read_pairs=2000
+COMBINED_FASTQ	s74478	read_pairs=2000
+COMBINED_FASTQ	s77407	read_pairs=2000
+COMBINED_FASTQ	s77409	read_pairs=2000
+COMBINED_FASTQ	s77414	read_pairs=2000

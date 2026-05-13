@@ -1,0 +1,18 @@
+DAY-EC activated.
+DAY-EC activated.
+user=ubuntu host=ip-10-0-0-41
+samtools=bwa=bwa-mem2=seqtk=pigz=/usr/bin/pigz
+zcat=/usr/bin/zcat
+awk=/usr/bin/awk
+python3=/home/ubuntu/miniconda3/envs/DAY-EC/bin/python3
+parallel=/home/ubuntu/miniconda3/envs/DAY-EC/bin/parallel
+ref_exists=/fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta
+-rwxr-xr-x 1 root root 3.0G Feb 19  2025 /fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta
+-rwxr-xr-x 1 root root 7.7K Feb 19  2025 /fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta.fai
+/fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta.amb
+/fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta.ann
+/fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta.bwt
+/fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta.pac
+/fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta.sa
+/fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta.0123
+/fsx/data/genomic_data/organism_references/H_sapiens/hg38/fasta_fai_minalt/GRCh38_no_alt_analysis_set.fasta.0123

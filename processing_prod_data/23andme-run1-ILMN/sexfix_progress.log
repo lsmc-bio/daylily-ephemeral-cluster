@@ -1,0 +1,12 @@
+DAY-EC activated.
+DAY-EC activated.
+date=2026-05-10T19:40:12Z
+processes
+ 475131  475065       09:17  1.1  0.0 python3 /home/ubuntu/daylily-runs/23andme-run1-ILMN/infer_sex_and_rerun.py
+ 475133  475131       09:10 99.9  2.5 /fsx/data/cached_envs/sentieon-genomics-202503.02/libexec/bwa index /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa
+workdir_files
+2026-05-10T19:31:02.4439274210 468827962 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa
+2026-05-10T19:31:04.8139264250 231112368 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa.pac
+2026-05-10T19:31:05.5789260990 118 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa.ann
+2026-05-10T19:31:05.5809260980 3949 /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/hg38.chr1_chrX_chrY.fa.amb
+tmp_dirs

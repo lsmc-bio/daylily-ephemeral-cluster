@@ -1,0 +1,7 @@
+DAY-EC activated.
+DAY-EC activated.
+-rwxr-xr-x 1 ubuntu ubuntu 36K May 10 14:20 /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/resources/bwa-mem2/bwa-mem2
+-rwxr-xr-x 1 root root 1.1K Feb  9 06:28 /fsx/data/cached_envs/sentieon-genomics-202503.02/bin/sentieon
+-rwxr-xr-x 1 root root 1.1K Feb  9 06:28 /fsx/data/cached_envs/sentieon-genomics-202503.02/bin/bwa
+Thank you for using Sentieon software. Supported commands are:
+  LongReadUtil STAR bamslice bwa driver fqidx licclnt licsrvr minimap2 pgutil plot pyexec rcat umi util

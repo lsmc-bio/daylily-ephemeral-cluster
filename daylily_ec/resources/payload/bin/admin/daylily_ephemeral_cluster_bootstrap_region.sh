@@ -6,7 +6,8 @@ usage() {
 Bootstrap region-scoped IAM policies for Daylily ephemeral cluster workflows.
 
 This script creates or updates the Daylily region policy alongside the
-ParallelCluster Lambda adjust policy.
+ParallelCluster Lambda adjust policy. It also creates or updates the regional
+Session Manager shell document required by Daylily headnode access.
 
 It attaches the region policy to an IAM *group* (recommended) and ensures the
 target IAM user is a member of that group. Run this once per AWS region in which
@@ -55,6 +56,7 @@ ACCOUNT_ID="$("${AWS[@]}" sts get-caller-identity --query Account --output text)
 
 REGION_POLICY_NAME="DaylilyRegionalEClusterPolicy-${REGION}"
 ADJUST_POLICY_NAME="DaylilyPClusterLambdaAdjustRoles"
+SSM_SESSION_DOCUMENT_NAME="SSM-SessionManagerRunShell"
 
 REGION_POLICY_DOC=$(cat <<JSON
 {
@@ -90,6 +92,92 @@ ADJUST_POLICY_DOC=$(cat <<JSON
 }
 JSON
 )
+
+SSM_SESSION_DOCUMENT_CONTENT=$(cat <<JSON
+{
+  "schemaVersion": "1.0",
+  "description": "Document to hold regional settings for Session Manager",
+  "sessionType": "Standard_Stream",
+  "inputs": {
+    "s3BucketName": "",
+    "s3KeyPrefix": "",
+    "s3EncryptionEnabled": true,
+    "cloudWatchLogGroupName": "",
+    "cloudWatchEncryptionEnabled": true,
+    "cloudWatchStreamingEnabled": true,
+    "kmsKeyId": "",
+    "runAsEnabled": true,
+    "runAsDefaultUser": "ubuntu",
+    "idleSessionTimeout": "60",
+    "maxSessionDuration": "1440",
+    "shellProfile": {
+      "windows": "",
+      "linux": "cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"
+    }
+  }
+}
+JSON
+)
+
+json_semantically_equal() {
+  local left="$1" right="$2"
+  command -v python3 >/dev/null 2>&1 || return 1
+  python3 - "$left" "$right" <<'PY'
+import json
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as handle:
+    left = json.load(handle)
+with open(sys.argv[2], encoding="utf-8") as handle:
+    right = json.load(handle)
+sys.exit(0 if left == right else 1)
+PY
+}
+
+ensure_ssm_session_document() {
+  local name="$1" content="$2" desired_json current_json update_output latest_version
+  desired_json="$(mktemp)"
+  current_json="$(mktemp)"
+  printf '%s\n' "${content}" > "${desired_json}"
+
+  if "${AWS[@]}" ssm get-document \
+      --name "${name}" \
+      --document-format JSON \
+      --query Content \
+      --output text > "${current_json}" 2>/dev/null; then
+    if json_semantically_equal "${desired_json}" "${current_json}"; then
+      echo "${name} already configured for ubuntu bash login shells"
+    else
+      echo "Updating ${name}"
+      if ! update_output="$("${AWS[@]}" ssm update-document \
+          --name "${name}" \
+          --document-format JSON \
+          --document-version '$LATEST' \
+          --content "file://${desired_json}" \
+          --query 'DocumentDescription.LatestVersion' \
+          --output text 2>&1)"; then
+        rm -f "${desired_json}" "${current_json}"
+        echo "ERR: failed to update ${name}: ${update_output}" >&2
+        exit 5
+      fi
+      latest_version="$(printf '%s\n' "${update_output}" | tail -n 1 | tr -d '[:space:]')"
+      if [[ -n "${latest_version}" && "${latest_version}" != "None" ]]; then
+        "${AWS[@]}" ssm update-document-default-version \
+          --name "${name}" \
+          --document-version "${latest_version}" >/dev/null
+      fi
+    fi
+  else
+    echo "Creating ${name}"
+    "${AWS[@]}" ssm create-document \
+      --name "${name}" \
+      --document-type Session \
+      --document-format JSON \
+      --content "file://${desired_json}" >/dev/null
+  fi
+
+  rm -f "${desired_json}" "${current_json}"
+}
 
 create_or_update_policy() {
   local name="$1" doc="$2" arn tmp_json
@@ -141,6 +229,7 @@ create_or_update_policy() {
 
 REGION_ARN="$(create_or_update_policy "${REGION_POLICY_NAME}" "${REGION_POLICY_DOC}")"
 ADJUST_ARN="$(create_or_update_policy "${ADJUST_POLICY_NAME}" "${ADJUST_POLICY_DOC}")"
+ensure_ssm_session_document "${SSM_SESSION_DOCUMENT_NAME}" "${SSM_SESSION_DOCUMENT_CONTENT}"
 
 sleep 7
 
@@ -221,4 +310,5 @@ cat <<SUMMARY
   - ${REGION_POLICY_NAME}: ${REGION_ARN} (attached to IAM group ${GROUP_NAME})
   - IAM user ${USER_NAME} is a member of ${GROUP_NAME}
   - ${ADJUST_POLICY_NAME}: ${ADJUST_ARN}
+  - ${SSM_SESSION_DOCUMENT_NAME}: Standard_Stream session as ubuntu bash login shell
 SUMMARY

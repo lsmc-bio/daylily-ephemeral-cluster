@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<string>", line 19, in <module>
+  File "/Users/jmajor/projects/lsmc/bfx_pipe/daylily-ephemeral-cluster/daylily_ec/aws/ssm.py", line 333, in run_shell
+    raise SsmCommandFailedError(
+daylily_ec.aws.ssm.SsmCommandFailedError: SSM command 'c4b90227-2d61-42e1-86de-56ccb0cf85d5' failed with status=Failed rc=1

@@ -1,0 +1,28 @@
+DAY-EC activated.
+DAY-EC activated.
+date=2026-05-10T19:59:04Z
+State:	I (idle)
+VmRSS:	   18688 kB
+Threads:	1
+voluntary_ctxt_switches:	142
+nonvoluntary_ctxt_switches:	1
+rchar: 46127956
+wchar: 8370779
+syscr: 163
+syscw: 1021
+read_bytes: 29360128
+write_bytes: 8396800
+cancelled_write_bytes: 0
+fds
+total 0
+lr-x------ 1 ubuntu ubuntu 64 May 10 19:59 0 -> /dev/null
+l-wx------ 1 ubuntu ubuntu 64 May 10 19:59 1 -> pipe:[2196828]
+l-wx------ 1 ubuntu ubuntu 64 May 10 19:59 2 -> pipe:[2196829]
+l-wx------ 1 ubuntu ubuntu 64 May 10 19:59 3 -> /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/all_samples.R1.fq
+l-wx------ 1 ubuntu ubuntu 64 May 10 19:59 4 -> /home/ubuntu/daylily-runs/23andme-run1-ILMN/sex_inference/combined/all_samples.R2.fq
+lr-x------ 1 ubuntu ubuntu 64 May 10 19:59 5 -> /fsx/data/staged_sample_data/remote_stage_20260510T130308Z/20260507-LH01106-0005-A23K3JVLT4_s77414-NOVASEQ-PCR-FREE-gdna-23andme-run1-ILMN_D0_0/20260507-LH01106-0005-A23K3JVLT4_s77414-NOVASEQ-PCR-FREE-gdna-23andme-run1-ILMN_D0_0_merged_R2.fastq.gz
+last headers
+@s77414|LH01106:5:23K3JVLT4:1:1101:40592:2878 1:N:0:TGAGGCACCG+CAATCCGATA
+CAAATCTTGTTGATTGTTTGAGATCCTTGACCCAGCCATGCCTGAAGTCCCCTTAGAATTCTCACTTGGATGAGTCAATCATTCCTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTCTTTC
++
+IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII9IIIII9IIIIIIIIIIIIIIIIIIIIIIIIIIIIIII9IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII

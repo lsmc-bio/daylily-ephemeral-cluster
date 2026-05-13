@@ -1,0 +1,186 @@
+DAY-EC activated.
+DAY-EC activated.
+Cloning into '/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis'...
+Note: switching to '5ea2525ec8b17d37dd23a4d9fee7b2343d92b0dd'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+Updating files:  45% (415/916)Updating files:  46% (422/916)Updating files:  47% (431/916)Updating files:  48% (440/916)Updating files:  49% (449/916)Updating files:  50% (458/916)Updating files:  51% (468/916)Updating files:  52% (477/916)Updating files:  53% (486/916)Updating files:  54% (495/916)Updating files:  55% (504/916)Updating files:  56% (513/916)Updating files:  57% (523/916)Updating files:  58% (532/916)Updating files:  59% (541/916)Updating files:  60% (550/916)Updating files:  61% (559/916)Updating files:  62% (568/916)Updating files:  63% (578/916)Updating files:  64% (587/916)Updating files:  65% (596/916)Updating files:  65% (597/916)Updating files:  66% (605/916)Updating files:  67% (614/916)Updating files:  67% (616/916)Updating files:  68% (623/916)Updating files:  69% (633/916)Updating files:  70% (642/916)Updating files:  71% (651/916)Updating files:  72% (660/916)Updating files:  73% (669/916)Updating files:  74% (678/916)Updating files:  75% (687/916)Updating files:  76% (697/916)Updating files:  77% (706/916)Updating files:  78% (715/916)Updating files:  79% (724/916)Updating files:  80% (733/916)Updating files:  81% (742/916)Updating files:  82% (752/916)Updating files:  83% (761/916)Updating files:  84% (770/916)Updating files:  85% (779/916)Updating files:  86% (788/916)Updating files:  87% (797/916)Updating files:  88% (807/916)Updating files:  89% (816/916)Updating files:  90% (825/916)Updating files:  91% (834/916)Updating files:  92% (843/916)Updating files:  93% (852/916)Updating files:  94% (862/916)Updating files:  95% (871/916)Updating files:  96% (880/916)Updating files:  97% (889/916)Updating files:  98% (898/916)Updating files:  99% (907/916)Updating files: 100% (916/916)Updating files: 100% (916/916), done.
+Cloning repository...
+
+Great success! Daylily repository cloned.
+Repository: https://github.com/lsmc-bio/daylily-omics-analysis.git
+Reference : 0.7.736
+Location  : /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis
+
+To get started:
+  cd /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis
+  # initialize and run the analysis repository per its documentation
+Notice: --project not set. Using default project name: fk-260509-use
+Project: fk-260509-use
+Skip Project Check: true
+Skipping project validation as --skip-project-check was passed.
+awk: cmd. line:1: BEGIN {print ( / ) * 100}
+awk: cmd. line:1:                 ^ unterminated regexp
+awk: cmd. line:2: BEGIN {print ( / ) * 100}
+awk: cmd. line:2:                          ^ unexpected newline or end of string
+
+________________________________________________________
+AWS Budget for project 'fk-260509-use' in region 'us-west-2':
+  Total:  USD
+  Used:  USD
+  Percent Used: %
+________________________________________________________
+(standard_in) 1: syntax error
+
+# conda environments:
+#
+# * -> active
+# + -> frozen
+                         /fsx/resources/environments/conda/ip-10-0-0-41/00f249848993a418ba0bf40fea4dc74f_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/2a6461bf9a46d2c0414d94b20df8c93b_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/3ad0c3fcec4025c1591d837fd439fd04_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/3e3b8edf462f0dcf210996ef8e1f5e0d_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/46efa7c74fc55a15748ed6949fe6ba90_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/48e2ca2ecb2865219fee59e87806a168_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/4e57492c698381f8d9b323488bf24299_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/54aceb1e24d38acfab10448b46f19239_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/64d9fc2ff8446bfd5d1372ffc4e31d3c_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/689c803653d4e103fa9679c1e9c9b60d_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/7990ea5d283d188db223ca08547f1bfe_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/8988860608c3df5d7b2c839cc0d8fd20_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/8c352572fdad148d14e3bba0b62680af_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/9b93c6753da2a2d0ed50cb5562bdd80e_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/a9b918f5ea608c35f6762425d8024740_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/cae9f1d5365dcc8a1f3037eeef52e3d8_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/cf2ba70495d2c6081d376edd336a7c80_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/dd948c1c27be2ac8eeb8a21415df4496_
+                         /fsx/resources/environments/conda/ip-10-0-0-41/fecc72c3107a46de81739cdffb6733e5_
+base                     /home/ubuntu/miniconda3
+DAY-EC               *   /home/ubuntu/miniconda3/envs/DAY-EC
+DAYOA                    /home/ubuntu/miniconda3/envs/DAYOA
+
+Day CLI initialized for project 'fk-260509-use' in region 'us-west-2'.
+The Daylily CLI is now available.
+Available commands (tab completion is enabled for all):
+ 
+	(day-activate / dy-a) [slurm|local] ([hg38|hg38_broad|b37])- Activate a Slurm or local environment.
+	                           
+	{day-set-genome-build / dy-g) [b37|hg38|hg38_broad] - Set the genome build for the current environment.
+	                           
+	(day-run / dy-r)          - Run a command in the current environment.
+	                           <tab> for exposed targets, -<tab> for all command line flags.
+	                           
+	(day-monitor / dy-m)      - Monitor workflow status (Snakemake, SLURM, logs).
+	                           Use --block-and-poll to wait for completion.
+	                           
+	(day-deactivate / dy-d)   - Deactivate the current environment.
+	                           Use 'dy-d reset' to hard reset the environment.
+	                           
+	                           
+	                           
+	                           
+	. To Stage Sample Data, see daylily-ephemeral-cluster docs for running ~/projects/daylily-ephemeral-cluster/bin/daylily-stage-analysis-samples-headnode 
+	  ... which once run, you will copy the samples.tsv and units.tsv files to config/ in this directory.
+	                           
+	(example): ACTIVATE AN ANALYSIS ENV
+
+
+
+
+
+		dy-a slurm hg38 # or hg38_broad or b37
+
+	(example): RUN ANALYSES
+
+		cp .test_data/data/0.01xwgs_HG002_hg38.samples.tsv config/samples.tsv
+
+		cp .test_data/data/0.01xwgs_HG002_hg38.units.tsv config/units.tsv
+
+
+
+		# Use target names directly (tab-complete available):
+
+		dy-r produce_snv_concordances -p -k -j 20 -n   # Illumina short-read SNV concordance
+
+		dy-r produce_alignstats -p -k -j 20 -n         # Alignment statistics
+
+
+
+		# Platform-specific targets:
+
+		dy-r produce_sentdont_vcf -p -k -j 20 -n       # ONT SNV calling
+
+		dy-r produce_sentdpb_vcf -p -k -j 20 -n        # PacBio SNV calling
+
+		dy-r produce_sentdug_vcf -p -k -j 20 -n        # Ultima SNV calling (use hg38_broad)
+
+
+
+		# Hybrid workflow targets:
+
+		dy-r produce_sentdhio_vcf -p -k -j 20 -n       # Hybrid Illumina+ONT CLI
+
+		dy-r produce_sentdhuo_vcf -p -k -j 20 -n       # Hybrid Ultima+ONT CLI (use hg38_broad)
+
+		dy-r produce_sentdhiom_vcf -p -k -j 20 -n      # Hybrid Illumina+ONT Modular
+
+		dy-r produce_sentdhuom_vcf -p -k -j 20 -n      # Hybrid Ultima+ONT Modular (use hg38_broad)
+
+
+
+		# Remove -n to execute (not dry-run)
+
+Requesting profile: slurm
+Attempting to deactivate existing environments & re-init with --project fk-260509-use .
+Remote call detected. Activating conda hack
+ > >> >>> 
+ACTIVE CONFIG FILES NOT FOUND IN /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm ... copying
+Copying template yaml files to active config files /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm
+Copying template bash files to active config files /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm
+yq is already installed.
+WARNING: sentieon lic file /fsx/data/cached_envs/x.lic not found.
+Detected sentieon license file: /fsx/data/cached_envs/Life_Sciences_Manufacturing_Corporation_eval.lic will be used and overrides what is in ~/.config/daylily/daylily_cli_global.yaml
+
+!!!!
+!!!!
+    WARNING: gittag:null not found touched in  ~/.config/daylily/null 
+     This might be fine if you have cloned a more recent release of daylily compared to the tagged version used to create this ephemeral cluster.
+     ... however, this is not expected. If you are running an ephemeral cluster headnode for days+, this is not the intended use of daylily, a fresh build might be called for.
+     This is checked by testing if ~/.config/daylily/null exists .
+!!!!
+ > >> >>>   genome build set to ::: hg38  
+       _______ GREAT SUCCESS _______       
+Remote call detected. Activating conda hack
+Your config files in /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm are newer than the templates. clear 2 go.
+Executing: snakemake --profile=/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm produce_alignstats produce_multiqc_final produce_snv_concordances --config aligners=[sent] dedupers=[dppl] snv_callers=[sentd] -p -j 100 -k -n
+Config file config/global.yaml is extended by additional config specified via the command line.
+loading global: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/global_AWSPC.yaml
+Config file config/global_AWSPC.yaml is extended by additional config specified via the command line.
+loading profile rule_config: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/day_profiles/slurm/rule_config.yaml
+Config file config/day_profiles/slurm/rule_config.yaml is extended by additional config specified via the command line.
+INFO::: The genome build hg38 is supported.  The genome build prefix is 'chr''.
+aligners: [sent]
+aligners (final): [sent]
+deduper (final): [dmd]
+SNV Callers:[sentd]
+SNV Callers (final): [sentd]
+Somatic SNV Callers:[senttn]
+... WARNING: No sv_callers set in the config.
+A    N   A   L  Y S I S    SAMPLE TABLE DETECTED ::: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/samples.tsv
+A    N   A   L  Y S I S    UNIT TABLE DETECTED ::: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis/config/units.tsv
+Building DAG of jobs...
+All Wildcards:    all snv_CALLERS:  ['sentd']  all ALIGNERS:  ['sent']  all CRAM_ALIGNERS:  []  all samples:  {'20260507-LH01106-0005-A23K3JVLT4-LSMC-HG003-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-LSMC-HG003-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-LSMC-NTC-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-LSMC-NTC-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s74478-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s74478-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77407-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77407-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77409-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77409-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77414-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77414-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77433-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77433-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77483-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77483-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77586-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77586-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77612-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77612-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77669-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77669-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77672-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77672-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77674-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77674-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77676-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77676-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77677-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77677-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77678-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77678-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77679-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77679-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77680-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77680-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77681-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77681-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77683-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77683-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77684-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77684-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77685-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77685-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77687-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77687-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77688-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77688-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77689-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77689-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77690-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77690-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77691-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77691-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77694-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77694-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77695-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77695-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77699-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77699-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77700-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77700-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77701-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77701-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77702-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77702-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77703-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77703-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77704-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77704-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77705-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77705-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77706-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77706-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77707-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77707-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77710-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77710-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77711-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77711-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77712-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77712-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77713-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77713-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77714-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77714-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77715-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77715-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77716-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77716-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77717-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77717-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77718-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77718-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77719-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77719-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77720-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77720-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77721-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77721-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77722-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77722-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77723-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77723-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77724-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77724-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77725-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77725-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77726-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77726-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77728-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77728-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77733-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77733-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77734-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77734-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77735-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77735-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77736-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77736-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77738-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77738-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77744-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77744-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77745-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77745-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77748-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77748-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77750-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77750-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77753-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77753-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77754-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77754-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106-0005-A23K3JVLT4-s77756-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ': ['20260507-LH01106-0005-A23K3JVLT4-s77756-23andme-run1-ILMN-0-D0-PCR-FREE-ILMN-NOVASEQ'], '20260507-LH01106--output truncated--

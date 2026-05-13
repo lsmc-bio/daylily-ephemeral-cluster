@@ -7,7 +7,7 @@ dependencies:
   - python=3.11
   - pip
   - awscli==2.34.29
-  - aws-session-manager-plugin
+  - aws-session-manager-plugin>=1.2.814.0
   - bash=5.2.37
   - jq=1.8.1
   - yq=3.4.3

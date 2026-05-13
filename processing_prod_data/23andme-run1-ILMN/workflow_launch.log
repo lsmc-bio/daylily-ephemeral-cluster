@@ -1,0 +1,15 @@
+DAY-EC activated.
+DAY-EC activated.
+__DAYLILY_STAGE_DIR__=/fsx/data/staged_sample_data/remote_stage_20260510T130308Z
+__DAYLILY_STAGE_SAMPLES__=/fsx/data/staged_sample_data/remote_stage_20260510T130308Z/20260510T130308Z_samples.tsv
+__DAYLILY_STAGE_UNITS__=/fsx/data/staged_sample_data/remote_stage_20260510T130308Z/20260510T130308Z_units.tsv
+DAY-EC activated.
+DAY-EC activated.
+__DAYLILY_SESSION__=23andme-run1-ILMN
+__DAYLILY_RUN_DIR__=/home/ubuntu/daylily-runs/23andme-run1-ILMN
+__DAYLILY_REPO_PATH__=/fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis
+Tmux session '23andme-run1-ILMN' created on the head node.
+Run state directory: /home/ubuntu/daylily-runs/23andme-run1-ILMN
+Workflow repo path: /fsx/analysis_results/ubuntu/23andme-run1-ILMN/daylily-omics-analysis
+Reconnect with: daylily-ssh-into-headnode --profile daylily-service-lsmc --region us-west-2 --cluster fk-260509-use
+Then run: tmux attach -t 23andme-run1-ILMN

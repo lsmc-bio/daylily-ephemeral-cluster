@@ -32,7 +32,7 @@ The current bootstrap helpers for account administrators are:
 - `daylily_ec/resources/payload/bin/admin/daylily_ephemeral_cluster_bootstrap_global.sh`
 - `daylily_ec/resources/payload/bin/admin/daylily_ephemeral_cluster_bootstrap_region.sh`
 
-The global bootstrap helper creates or updates `DaylilyGlobalEClusterPolicy` and is intended to be run once per account. The regional bootstrap helper creates or updates `DaylilyRegionalEClusterPolicy-<region>` and is intended to be run once per target region.
+The global bootstrap helper creates or updates `DaylilyGlobalEClusterPolicy` and is intended to be run once per account. The regional bootstrap helper creates or updates `DaylilyRegionalEClusterPolicy-<region>`, creates or updates `SSM-SessionManagerRunShell`, and is intended to be run once per target region.
 
 The current policy surface allows the Daylily operator flow to use:
 
@@ -97,6 +97,16 @@ with `stty -ixon -ixoff`. A bare `exec bash -l` is not sufficient because
 Session Manager starts in the SSM agent working directory.
 
 If this document is missing or misconfigured, `daylily-ec headnode connect` and other supported SSM flows will fail on purpose.
+
+The regional admin bootstrap helper installs the supported document for new
+regions. To repair the current region, rerun:
+
+```bash
+bin/admin/daylily_ephemeral_cluster_bootstrap_region.sh \
+  --region "$AWS_REGION" \
+  --profile <admin_profile> \
+  --user <operator_iam_user>
+```
 
 ## 6. Region, Availability Zone, And Bucket Alignment
 

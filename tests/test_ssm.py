@@ -10,6 +10,7 @@ import pytest
 from daylily_ec.aws.ssm import (
     HeadNodeTarget,
     SessionManagerPluginMissingError,
+    SessionManagerPluginUnsupportedError,
     SsmCommandFailedError,
     SsmInstanceUnavailableError,
     SsmError,
@@ -34,12 +35,33 @@ def _assert_flow_control_guard_command(mock_popen: MagicMock) -> None:
 
 class TestRequireSessionManagerPlugin:
     @patch("daylily_ec.aws.ssm.shutil.which", return_value="/usr/local/bin/session-manager-plugin")
-    def test_present(self, _mock_which):
+    @patch("daylily_ec.aws.ssm.subprocess.run")
+    def test_present(self, mock_run, _mock_which):
+        mock_run.return_value = subprocess.CompletedProcess(
+            args=[],
+            returncode=0,
+            stdout="1.2.814.0\n",
+            stderr="",
+        )
+
         require_session_manager_plugin()
 
     @patch("daylily_ec.aws.ssm.shutil.which", return_value=None)
     def test_missing(self, _mock_which):
         with pytest.raises(SessionManagerPluginMissingError):
+            require_session_manager_plugin()
+
+    @patch("daylily_ec.aws.ssm.shutil.which", return_value="/usr/local/bin/session-manager-plugin")
+    @patch("daylily_ec.aws.ssm.subprocess.run")
+    def test_rejects_old_plugin(self, mock_run, _mock_which):
+        mock_run.return_value = subprocess.CompletedProcess(
+            args=[],
+            returncode=0,
+            stdout="1.2.600.0\n",
+            stderr="",
+        )
+
+        with pytest.raises(SessionManagerPluginUnsupportedError, match="too old"):
             require_session_manager_plugin()
 
 
@@ -310,7 +332,7 @@ class TestStartSession:
             subprocess.CompletedProcess(
                 args=[],
                 returncode=0,
-                stdout='{"inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"}}}',
+                stdout='{"sessionType":"Standard_Stream","inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"}}}',
                 stderr="",
             ),
             subprocess.CompletedProcess(args=[], returncode=0, stdout="", stderr=""),
@@ -356,7 +378,7 @@ class TestStartSession:
         mock_run.return_value = subprocess.CompletedProcess(
             args=[],
             returncode=0,
-            stdout='{"inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"}}}',
+            stdout='{"sessionType":"Standard_Stream","inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"}}}',
             stderr="",
         )
         mock_execvpe.side_effect = ExecCalled()
@@ -403,7 +425,7 @@ class TestStartSession:
             subprocess.CompletedProcess(
                 args=[],
                 returncode=0,
-                stdout='{"inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"}}}',
+                stdout='{"sessionType":"Standard_Stream","inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"}}}',
                 stderr="",
             ),
             subprocess.CompletedProcess(args=["stty"], returncode=0, stdout="", stderr=""),
@@ -452,7 +474,7 @@ class TestStartSession:
             subprocess.CompletedProcess(
                 args=[],
                 returncode=0,
-                stdout='{"inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"}}}',
+                stdout='{"sessionType":"Standard_Stream","inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && { stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }"}}}',
                 stderr="",
             ),
             subprocess.CompletedProcess(args=["stty"], returncode=0, stdout="", stderr=""),
@@ -482,11 +504,28 @@ class TestStartSession:
         mock_run.return_value = subprocess.CompletedProcess(
             args=[],
             returncode=0,
-            stdout='{"inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"exec bash -l"}}}',
+            stdout='{"sessionType":"Standard_Stream","inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"exec bash -l"}}}',
             stderr="",
         )
 
         with pytest.raises(SsmError, match="cd to /home/ubuntu"):
+            start_session("i-abc123", "us-west-2", profile="dev")
+
+    @patch("daylily_ec.aws.ssm.require_session_manager_plugin")
+    @patch("daylily_ec.aws.ssm.subprocess.run")
+    def test_rejects_session_manager_preferences_without_standard_stream(
+        self,
+        mock_run,
+        _mock_require_plugin,
+    ):
+        mock_run.return_value = subprocess.CompletedProcess(
+            args=[],
+            returncode=0,
+            stdout='{"sessionType":"InteractiveCommands","inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"cd /home/ubuntu && exec bash -l"}}}',
+            stderr="",
+        )
+
+        with pytest.raises(SsmError, match="Standard_Stream"):
             start_session("i-abc123", "us-west-2", profile="dev")
 
     @patch("daylily_ec.aws.ssm.require_session_manager_plugin")
@@ -499,7 +538,7 @@ class TestStartSession:
         mock_run.return_value = subprocess.CompletedProcess(
             args=[],
             returncode=0,
-            stdout='{"inputs":{"runAsEnabled":false,"runAsDefaultUser":"ssm-user"}}',
+            stdout='{"sessionType":"Standard_Stream","inputs":{"runAsEnabled":false,"runAsDefaultUser":"ssm-user"}}',
             stderr="",
         )
 
@@ -516,7 +555,7 @@ class TestStartSession:
         mock_run.return_value = subprocess.CompletedProcess(
             args=[],
             returncode=0,
-            stdout='{"inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"pwd"}}}',
+            stdout='{"sessionType":"Standard_Stream","inputs":{"runAsEnabled":true,"runAsDefaultUser":"ubuntu","shellProfile":{"linux":"pwd"}}}',
             stderr="",
         )
 

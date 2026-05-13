@@ -108,6 +108,38 @@ __daylily_activate_refresh_command_cache() {
   rehash 2>/dev/null || true
 }
 
+__daylily_activate_path_without() {
+  local remove_path="$1"
+  local source_path="$2"
+  local old_ifs="$IFS"
+  local part
+  local new_path=""
+
+  IFS=:
+  for part in ${source_path}; do
+    if [ "${part}" = "${remove_path}" ]; then
+      continue
+    fi
+    if [ -z "${new_path}" ]; then
+      new_path="${part}"
+    else
+      new_path="${new_path}:${part}"
+    fi
+  done
+  IFS="${old_ifs}"
+  printf '%s\n' "${new_path}"
+}
+
+__daylily_activate_prioritize_conda_bin() {
+  if [ -z "${CONDA_PREFIX:-}" ] || [ ! -d "${CONDA_PREFIX}/bin" ]; then
+    return 0
+  fi
+
+  PATH="${CONDA_PREFIX}/bin:$(__daylily_activate_path_without "${CONDA_PREFIX}/bin" "${PATH}")"
+  export PATH
+  __daylily_activate_refresh_command_cache
+}
+
 __daylily_activate_dayec_exists() {
   conda env list 2>/dev/null | awk '{print $1}' | grep -qx 'DAY-EC'
 }
@@ -140,6 +172,7 @@ conda activate DAY-EC || {
   echo "Error: failed to activate the DAY-EC conda environment." >&2
   return 1
 }
+__daylily_activate_prioritize_conda_bin
 __daylily_activate_refresh_command_cache
 
 if [ "${__daylily_activate_created_dayec}" = "1" ]; then
@@ -161,6 +194,8 @@ unset -f __daylily_activate_conda_is_function
 unset -f __daylily_activate_conda_exe
 unset -f __daylily_activate_load_conda
 unset -f __daylily_activate_refresh_command_cache
+unset -f __daylily_activate_path_without
+unset -f __daylily_activate_prioritize_conda_bin
 unset -f __daylily_activate_dayec_exists
 
 echo "DAY-EC activated."

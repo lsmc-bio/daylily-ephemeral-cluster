@@ -24,6 +24,9 @@ PENDING_STATUSES = {"Pending", "InProgress", "Delayed"}
 SUCCESS_STATUS = "Success"
 SUPPORTED_REMOTE_USER = "ubuntu"
 SUPPORTED_SESSION_HOME = f"/home/{SUPPORTED_REMOTE_USER}"
+SUPPORTED_SESSION_DOCUMENT = "SSM-SessionManagerRunShell"
+SUPPORTED_SESSION_TYPE = "Standard_Stream"
+MIN_SESSION_MANAGER_PLUGIN_VERSION = (1, 2, 814, 0)
 SUPPORTED_SESSION_SHELL_PROFILE = (
     f"cd {SUPPORTED_SESSION_HOME} && {{ stty -ixon -ixoff 2>/dev/null || true; exec bash -l; }}"
 )
@@ -35,6 +38,10 @@ class SsmError(RuntimeError):
 
 class SessionManagerPluginMissingError(SsmError):
     """Raised when the local Session Manager plugin is not installed."""
+
+
+class SessionManagerPluginUnsupportedError(SsmError):
+    """Raised when the local Session Manager plugin is too old for Daylily."""
 
 
 class SsmInstanceUnavailableError(SsmError):
@@ -72,12 +79,37 @@ class SsmCommandResult:
 
 def _build_env(*, profile: Optional[str] = None, region: Optional[str] = None) -> Dict[str, str]:
     env = dict(os.environ)
+    conda_prefix = env.get("CONDA_PREFIX", "").strip()
+    conda_bin = os.path.join(conda_prefix, "bin") if conda_prefix else ""
+    if conda_bin and os.path.isdir(conda_bin):
+        path_parts = [part for part in env.get("PATH", "").split(os.pathsep) if part != conda_bin]
+        env["PATH"] = os.pathsep.join([conda_bin, *path_parts])
     if profile:
         env["AWS_PROFILE"] = profile
     if region:
         env["AWS_REGION"] = region
         env.setdefault("AWS_DEFAULT_REGION", region)
     return env
+
+
+def _parse_version_tuple(raw: str) -> tuple[int, ...]:
+    pieces: list[int] = []
+    for part in raw.strip().split("."):
+        if not part.isdigit():
+            break
+        pieces.append(int(part))
+    return tuple(pieces)
+
+
+def _format_version_tuple(version: tuple[int, ...]) -> str:
+    return ".".join(str(part) for part in version)
+
+
+def _version_at_least(found: tuple[int, ...], minimum: tuple[int, ...]) -> bool:
+    width = max(len(found), len(minimum))
+    found_padded = found + (0,) * (width - len(found))
+    minimum_padded = minimum + (0,) * (width - len(minimum))
+    return found_padded >= minimum_padded
 
 
 def _build_boto_session(*, profile: Optional[str], region: str):
@@ -88,11 +120,31 @@ def _build_boto_session(*, profile: Optional[str], region: str):
 
 def require_session_manager_plugin() -> None:
     """Ensure the local Session Manager plugin is installed."""
-    if shutil.which("session-manager-plugin"):
-        return
-    raise SessionManagerPluginMissingError(
-        "session-manager-plugin is required for interactive SSM sessions."
+    plugin_path = shutil.which("session-manager-plugin", path=_build_env().get("PATH"))
+    if not plugin_path:
+        raise SessionManagerPluginMissingError(
+            "session-manager-plugin is required for interactive SSM sessions. "
+            "Run `source ./activate` from the daylily-ephemeral-cluster checkout so "
+            "DAY-EC provides the supported AWS CLI and Session Manager plugin."
+        )
+
+    result = subprocess.run(
+        [plugin_path, "--version"],
+        capture_output=True,
+        text=True,
+        env=_build_env(),
     )
+    version = _parse_version_tuple(result.stdout.strip() or result.stderr.strip())
+    if result.returncode != 0 or not _version_at_least(
+        version,
+        MIN_SESSION_MANAGER_PLUGIN_VERSION,
+    ):
+        raise SessionManagerPluginUnsupportedError(
+            "session-manager-plugin is too old for Daylily interactive SSM sessions. "
+            f"Found {result.stdout.strip() or result.stderr.strip() or 'unknown'}, "
+            f"need >= {_format_version_tuple(MIN_SESSION_MANAGER_PLUGIN_VERSION)}. "
+            "Rebuild DAY-EC with `conda env remove -n DAY-EC && source ./activate`."
+        )
 
 
 def resolve_headnode_instance_id(
@@ -384,7 +436,7 @@ def _require_ubuntu_session_preferences(
         "ssm",
         "get-document",
         "--name",
-        "SSM-SessionManagerRunShell",
+        SUPPORTED_SESSION_DOCUMENT,
         "--document-format",
         "JSON",
         "--query",
@@ -407,15 +459,22 @@ def _require_ubuntu_session_preferences(
     if result.returncode != 0:
         detail = result.stderr.strip() or result.stdout.strip() or "unknown error"
         raise SsmError(
-            f"Unable to read Session Manager preferences for 'SSM-SessionManagerRunShell': {detail}"
+            f"Unable to read Session Manager preferences for '{SUPPORTED_SESSION_DOCUMENT}': {detail}"
         )
 
     try:
         payload = json.loads(result.stdout or "{}")
     except json.JSONDecodeError as exc:
         raise SsmError(
-            "Unable to parse Session Manager preferences for 'SSM-SessionManagerRunShell'."
+            f"Unable to parse Session Manager preferences for '{SUPPORTED_SESSION_DOCUMENT}'."
         ) from exc
+
+    session_type = str(payload.get("sessionType") or "") if isinstance(payload, dict) else ""
+    if session_type != SUPPORTED_SESSION_TYPE:
+        raise SsmError(
+            f"{SUPPORTED_SESSION_DOCUMENT} must be a {SUPPORTED_SESSION_TYPE} Session Manager "
+            f"document. Found sessionType={session_type or 'missing'}."
+        )
 
     inputs = payload.get("inputs", {}) if isinstance(payload, dict) else {}
     shell_profile = inputs.get("shellProfile", {}) if isinstance(inputs, dict) else {}
@@ -428,7 +487,7 @@ def _require_ubuntu_session_preferences(
     ):
         raise SsmError(
             "Session Manager must be configured to run shell sessions as ubuntu "
-            "via SSM-SessionManagerRunShell."
+            f"via {SUPPORTED_SESSION_DOCUMENT}."
         )
     if not linux_shell_profile or (
         "bash -l" not in linux_shell_profile
@@ -437,12 +496,12 @@ def _require_ubuntu_session_preferences(
     ):
         raise SsmError(
             "Session Manager must source the ubuntu login shell via "
-            "SSM-SessionManagerRunShell shellProfile.linux."
+            f"{SUPPORTED_SESSION_DOCUMENT} shellProfile.linux."
         )
     if not _shell_profile_enters_ubuntu_home(linux_shell_profile):
         raise SsmError(
             "Session Manager must cd to /home/ubuntu before starting the ubuntu login shell "
-            "via SSM-SessionManagerRunShell shellProfile.linux. Expected a shell profile "
+            f"via {SUPPORTED_SESSION_DOCUMENT} shellProfile.linux. Expected a shell profile "
             f"like: {SUPPORTED_SESSION_SHELL_PROFILE!r}."
         )
 
@@ -537,7 +596,7 @@ def start_session(
         "--target",
         instance_id,
         "--document-name",
-        "SSM-SessionManagerRunShell",
+        SUPPORTED_SESSION_DOCUMENT,
     ]
     env = _build_env(profile=profile, region=region)
     if replace_process:

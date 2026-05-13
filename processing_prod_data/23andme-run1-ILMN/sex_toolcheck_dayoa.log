@@ -1,0 +1,6 @@
+DAY-EC activated.
+DAY-EC activated.
+conda=DAYOA
+samtools=bwa=bwa-mem2=seqtk=pigz=/usr/bin/pigz
+zcat=/usr/bin/zcat
+minimap2=
